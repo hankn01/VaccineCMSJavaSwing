@@ -1,9 +1,7 @@
 # Team 1 ReadMe File
 
 ## Summary
-
-Link: [Github][toGithub]
-[toGithub]: https://github.com/kanei0415/VaccineCMSJavaSwing
+[toGithub] https://github.com/kanei0415/VaccineCMSJavaSwing
 
 ### Description
 * Login Form : 정부 사람이 맞는지 확인 (보안)
@@ -17,7 +15,7 @@ Link: [Github][toGithub]
 * Country(Company Show, Vaccine) -> Company(name, Vaccine)
 
 ## 2020110761 김영호
-> GUI
+> GUI   
 * landing
   * CompanyLogin.java
   * CountryLogin.java
@@ -35,8 +33,8 @@ Link: [Github][toGithub]
 
 
 
-> MODEL
-[!Alt vaccineModel](./vaccineModelStructure.jpg)
+> MODEL   
+![Alt vaccineModel](./vaccineModelStructure.jpg)
 * 
   * AZ.java
   * ChadOx1.java
