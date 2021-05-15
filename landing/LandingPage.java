@@ -12,12 +12,10 @@ public class LandingPage extends JFrame {
 	public static final int FRAME_HEIGHT = 500;
 	
 	public enum Pages{
-		Country, Company, Home, SignIn
+		Login, SignIn
 	};
 	
-	LoginHome lh = new LoginHome();
-	CountryLogin conl = new CountryLogin();
-	CompanyLogin coml = new CompanyLogin();
+	LoginHome l = new LoginHome();
 	SignIn si = new SignIn();
 	
 	public LandingPage() {
@@ -27,27 +25,19 @@ public class LandingPage extends JFrame {
 		setLayout(new BorderLayout());
 		setTitle("Vaccine CMS by Team1");
 		
-		add(lh, BorderLayout.CENTER);
+		add(l, BorderLayout.CENTER);
 		
 		JMenuBar loginBar = new JMenuBar();
 		
 		JMenu loginTypeMenu = new JMenu("Login Type");
 		
-		JMenuItem Country = new JMenuItem("Country");
+		JMenuItem Country = new JMenuItem("Login");
 		Country.addActionListener(new LoginMenuOnChangeEventLisener(this));
 		loginTypeMenu.add(Country);
 		
-		JMenuItem Company = new JMenuItem("Company");
+		JMenuItem Company = new JMenuItem("SignIn");
 		Company.addActionListener(new LoginMenuOnChangeEventLisener(this));
 		loginTypeMenu.add(Company);
-		
-		JMenuItem Home = new JMenuItem("Home");
-		Home.addActionListener(new LoginMenuOnChangeEventLisener(this));
-		loginTypeMenu.add(Home);
-		
-		JMenuItem SignIn = new JMenuItem("SignIn");
-		SignIn.addActionListener(new LoginMenuOnChangeEventLisener(this));
-		loginTypeMenu.add(SignIn);
 		
 		loginBar.add(loginTypeMenu);
 		
@@ -63,15 +53,10 @@ public class LandingPage extends JFrame {
 		
 		public void setPage(Pages type) {
 			parent.getContentPane().removeAll();
-			
 			parent.setLayout(new BorderLayout());
 			
 			switch(type) {
-			case Country: parent.add(conl, BorderLayout.CENTER);
-				break;
-			case Company: parent.add(coml, BorderLayout.CENTER);
-				break;
-			case Home: parent.add(lh, BorderLayout.CENTER);
+			case Login: parent.add(l, BorderLayout.CENTER);
 				break;
 			case SignIn: parent.add(si, BorderLayout.CENTER);
 				break;
@@ -84,11 +69,7 @@ public class LandingPage extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			switch(e.getActionCommand()) {
-			case "Country": setPage(Pages.Country);
-				break;
-			case "Company": setPage(Pages.Company);
-				break;
-			case "Home": setPage(Pages.Home);
+			case "Login": setPage(Pages.Login);
 				break;
 			case "SignIn": setPage(Pages.SignIn);
 			break;

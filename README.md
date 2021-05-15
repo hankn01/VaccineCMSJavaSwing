@@ -35,7 +35,7 @@
 
 > MODEL   
 ![Alt vaccineModel](./vaccineModelStructure.jpg)
-* 
+* vaccine
   * AZ.java
   * ChadOx1.java
   * Date.java
