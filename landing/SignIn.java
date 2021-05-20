@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,9 +16,9 @@ implements ActionListener{
 	public static final int ID_DIGIT = 12;
 	public static final int PW_DIGIT = 12;
 	
-	private JLabel idInput;
-	private JLabel pwInput;
-	private JLabel pwCheck;
+	private JTextField idInput;
+	private JTextField pwInput;
+	private JTextField pwCheck;
 	
 	public SignIn() {
 		super();
@@ -29,13 +30,9 @@ implements ActionListener{
 		JLabel idPrompt = new JLabel("ID : ");
 		idInputForm.add(idPrompt, BorderLayout.EAST);
 		
-		JTextField idInput = new JTextField(ID_DIGIT);
+		idInput = new JTextField(ID_DIGIT);
 		idInput.setEditable(true);
 		idInputForm.add(idInput, BorderLayout.CENTER);
-		
-		JButton check = new JButton("Check");
-		check.addActionListener(this);
-		idInputForm.add(check, BorderLayout.WEST);
 		
 		add(idInputForm);
 		
@@ -44,7 +41,7 @@ implements ActionListener{
 		JLabel pwPrompt = new JLabel("PW : ");
 		pwInputForm.add(pwPrompt, BorderLayout.EAST);
 		
-		JTextField pwInput = new JTextField(ID_DIGIT);
+		pwInput = new JTextField(ID_DIGIT);
 		pwInput.setEditable(true);
 		pwInputForm.add(pwInput, BorderLayout.CENTER);
 		
@@ -55,9 +52,9 @@ implements ActionListener{
 		JLabel pwCheckPrompt = new JLabel("PW Check : ");
 		pwCheckForm.add(pwCheckPrompt, BorderLayout.EAST);
 		
-		JTextField pwCheckInput = new JTextField(ID_DIGIT);
-		pwCheckInput.setEditable(true);
-		pwCheckForm.add(pwCheckInput, BorderLayout.CENTER);
+		pwCheck = new JTextField(ID_DIGIT);
+		pwCheck.setEditable(true);
+		pwCheckForm.add(pwCheck, BorderLayout.CENTER);
 		
 		add(pwCheckForm);
 		
@@ -71,11 +68,24 @@ implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		PrintWriter pw = null;
 		
-	}
-	
-	// Login ID PW °Ë»ç
-	public boolean checkLogin() {
-		return true;
+		try {
+			pw = new PrintWriter(new FileOutputStream("Account.txt", true));
+			
+			String id = idInput.getText().toString();
+			String password = pwInput.getText().toString();
+			String passwordCheck = pwCheck.getText().toString();
+			
+			if(password.equals(passwordCheck)) {
+				pw.println(id + "-" + password);
+			} else {
+				pwCheck.setText("The password is different.");
+			}
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		
+		pw.close();
 	}
 }
