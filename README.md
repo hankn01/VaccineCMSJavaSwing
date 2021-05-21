@@ -31,7 +31,18 @@
   * TopBar.java
   * VaccineMainMenu.java
 
-
+## 2020115974 한강민 
+> GUI
+* CountryManage (GUI 구현)
+  * CountryScreen.java
+  * LocalStockScreen.java
+  * LocalVaccineControl.java
+  * NationalStockScreen.java
+  * NationalVaccineControl.java
+* CountryInit (내부 클래스 구현 - 구현 예정)
+  * Country.java
+  * LocalGov.java
+  * CAUTION: This can be changed by the plan or program of other members.
 
 > MODEL   
 ![Alt vaccineModel](./vaccineModelStructure.jpg)
