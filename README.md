@@ -16,14 +16,15 @@
 
 ## 2020110761 김영호
 > GUI   
-* landing
-  * CompanyLogin.java
-  * CountryLogin.java
+* landing - File I/O, GUI, StringTokenizer
   * LandingPage.java
+    * This page is the first landing page that users see when they execute codes.
   * LoginHome.java
+    * This page is for logging in.
   * SignIn.java
+    * This page is for membership and runs file output with Account.txt.
 
-* vaccineView
+* vaccineView - GUI, ArrayList
   * EffectivenessContents.java
   * InformationContents.java
   * InventoryContents.java
@@ -31,23 +32,7 @@
   * TopBar.java
   * VaccineMainMenu.java
 
-
-
 > MODEL   
 ![Alt vaccineModel](./vaccineModelStructure.jpg)
-* vaccine
-  * AZ.java
-  * ChadOx1.java
-  * Date.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
-  * AZ.java
+* vaccine - Class, Inheritance, Interface
+  * 
