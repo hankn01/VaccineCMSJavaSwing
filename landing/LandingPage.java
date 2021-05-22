@@ -15,7 +15,7 @@ public class LandingPage extends JFrame {
 		Login, SignIn
 	};
 	
-	LoginHome l = new LoginHome();
+	LoginHome l = new LoginHome(this);
 	SignIn si = new SignIn();
 	
 	public LandingPage() {

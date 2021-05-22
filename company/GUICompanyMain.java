@@ -51,7 +51,7 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 	private ArrayList<Company> companies = new ArrayList<Company>();
 	
 	
-	
+	/*
 	public static void main(String[] args) {
 		GUICompanyMain gui = new GUICompanyMain();
 		
@@ -59,6 +59,7 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 		
 
 	}
+	*/
 	
 	public GUICompanyMain() {
 		
@@ -228,7 +229,7 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 		
 		add(buttonpanel, BorderLayout.NORTH);
 		
-		
+		this.setVisible(true);
 		
 	}
 

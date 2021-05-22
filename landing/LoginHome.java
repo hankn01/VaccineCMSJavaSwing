@@ -8,6 +8,8 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
+import country.CountryScreen;
+
 public class LoginHome extends JPanel
 implements ActionListener{
 	public static final int ID_DIGIT = 12;
@@ -18,8 +20,13 @@ implements ActionListener{
 	
 	private ArrayList<Account> accounts = new ArrayList<Account>();
 	
-	public LoginHome() {
+	private LandingPage lp;
+	
+	public LoginHome(LandingPage lp) {
 			super();
+			
+			this.lp = lp;
+			
 			setLayout(new GridLayout(4,1));
 			add(new JLabel("Login Home"));
 			
@@ -70,6 +77,11 @@ implements ActionListener{
 			
 			for(Account a : accounts) {
 				if(a.equals(tmp)) {
+					lp.dispose();
+					CountryScreen scre = new CountryScreen();
+					//this.setVisible(false);
+					//super.setVisible(false);
+					
 					idInput.setText("Login Success");
 					pwInput.setText("Login Success");
 					break;
