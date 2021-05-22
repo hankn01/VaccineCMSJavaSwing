@@ -16,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +29,7 @@ public class GUIaddCPcomInfo extends JFrame {
 	
 	Dimension frameSize = this.getSize(); // 프레임 사이즈
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // 모니터 사이즈
+	TextAdaptor TA = new TextAdaptor();
 
 
 	
@@ -60,19 +62,21 @@ public class GUIaddCPcomInfo extends JFrame {
 	JLabel l6 = new JLabel("위탁요청기업");
 	JLabel l7 = new JLabel("백신");
 	JLabel l8 = new JLabel("한달 백신 생산량");
-	JLabel l9 = new JLabel("판매 국가");
+	//JLabel l9 = new JLabel("판매 국가");
 	JLabel l99 = new JLabel("(입력 예시:미국.중국.유럽연합)");
 	JPanel l999 = new JPanel();
 	l999.setLayout(new GridLayout(2,1));
-	l999.add(l9);
-	l999.add(l99);
+	//l999.add(l9);
+	//l999.add(l99);
 	JTextField t1 = new JTextField();
 	JTextField t2 = new JTextField();
 
 	JTextField t4 = new JTextField();
 	JTextField t5 = new JTextField();
 	JTextField t6 = new JTextField();
-	JTextField t7 = new JTextField();
+	//JTextField t7 = new JTextField();
+	String [] vaccinelist = {"Moderna", "Pfizer", "AZ", "Yansen", "ChadOx1"};
+	JComboBox t7 = new JComboBox(vaccinelist);
 	JTextField t8 = new JTextField();
 	JTextArea t99 = new JTextArea(3, 10);
 	JScrollPane t9 = new JScrollPane(t99);
@@ -103,7 +107,7 @@ public class GUIaddCPcomInfo extends JFrame {
 	form.add(l8);
 	form.add(t8);
 	form.add(l999);
-	form.add(t9);
+	//form.add(t9);
 
 	
 	
@@ -119,8 +123,15 @@ public class GUIaddCPcomInfo extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			
+			if(!(TA.stringisdisit(t8.getText())) || !(TA.stringisdisit(t5.getText())) || !(TA.stringisdisit(month.getText()))
+					|| !(TA.stringisdisit(day.getText())) || !(TA.stringisdisit(year.getText()))) {
+				JOptionPane.showMessageDialog(null, "설립일 또는\n한달백신생산량\n또는 사원 수에\n숫자를 입력하시오.");
+				
+			}else {
+			
 			try {
-				String filePath = "C:\\Users\\배지훈\\eclipse-workspace\\Teamp\\src\\company\\회사데이터.txt";
+				String filePath = "회사데이터.txt";
 				File file = new File(filePath);
 				if(!file.exists()) {
 					file.createNewFile();
@@ -128,14 +139,15 @@ public class GUIaddCPcomInfo extends JFrame {
 				BufferedWriter bos = new BufferedWriter(new FileWriter(file,true));
 				bos.write("위탁생산기업-");
 				bos.write(t1.getText()+"-"); //회사이름
-				bos.write(t7.getText()+" "+"/"+t6.getText()+"-"); //백신(위탁생산요청기업)
-				bos.write(t99.getText()+"-"); // 판매국가
+				bos.write(t7.getSelectedItem()+"/"+t6.getText()+"-"); //백신(위탁생산요청기업)
+				bos.write(" -"); // 판매국가
 				bos.write(t8.getText()+"-"); // 한달백신생산량
 				bos.write(t2.getText()+"-"); //CEO
 				bos.write(month.getText()+"/"+day.getText()+"/"+year.getText()+"-"); //설립일
 				bos.write(t4.getText()+"-"); //본사 위치
 				bos.write(t5.getText()+"\r\n"); //사원 수
 				bos.close();
+				TA.readtext();
 				JOptionPane.showMessageDialog(null, "저장 완료");
 				GUICompanyMain.model.setNumRows(0);
 				try {
@@ -160,8 +172,12 @@ public class GUIaddCPcomInfo extends JFrame {
 				JOptionPane.showMessageDialog(null, "저장 실패");
 			}	
 		}
+		}
 	});
 	insertpanel.add(insert);
 	add(insertpanel, BorderLayout.SOUTH);
 	}
+	
+	
+
 }

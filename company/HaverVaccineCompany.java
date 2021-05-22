@@ -41,7 +41,7 @@ public class HaverVaccineCompany extends Company{
 		this.VPTM = avptn;
 	}
 	
-	public double getVTPM(){
+	public int getVTPM(){
 		return this.VPTM;
 	}
 	
@@ -58,9 +58,13 @@ public class HaverVaccineCompany extends Company{
 	
 	public String getCountry() {
 		String line = "";
+		int index = 0;
 		for(String s: PVC) {
+			index++;
 			line += s;
-			line += "/";
+			if(!(PVC.size() == index)) {
+				line += "/";
+			}
 		}
 		return line;
 	}

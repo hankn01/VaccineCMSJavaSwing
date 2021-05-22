@@ -79,5 +79,7 @@ public class GUIaddCompanyinfo extends JPanel{
 		
 
 	}
+	
+	
 
 }

@@ -3,8 +3,10 @@ package company;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -27,6 +29,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class GUIaddHavevaccineComInfo extends JFrame {
+	
+	Dimension frameSize = this.getSize(); // 프레임 사이즈
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // 모니터 사이즈
+	TextAdaptor TA = new TextAdaptor();
 
 	public GUIaddHavevaccineComInfo(){
 
@@ -40,6 +46,8 @@ public class GUIaddHavevaccineComInfo extends JFrame {
 		JPanel form = new JPanel();
 		form.setLayout(new GridLayout(8,2,5,5));
 		add(form ,BorderLayout.CENTER);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setLocation((screenSize.width - frameSize.width)/2, (screenSize.height - frameSize.height)/2);
 		
 		
 		setTitle("회사 정보 추가");
@@ -62,7 +70,9 @@ public class GUIaddHavevaccineComInfo extends JFrame {
 		
 		
 		JTextField t1 = new JTextField();
-		JTextField t2 = new JTextField();
+		//JTextField t2 = new JTextField();
+		String [] vaccinelist = {"Moderna", "Pfizer", "AZ", "Yansen", "ChadOx1"};
+		JComboBox t2 = new JComboBox(vaccinelist);
 		//JTextField t3 = new JTextField();
 		JTextArea t33 = new JTextArea(3, 10);
 		JScrollPane t3 = new JScrollPane(t33);
@@ -108,24 +118,30 @@ public class GUIaddHavevaccineComInfo extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				if(!(TA.stringisdisit(t4.getText())) || !(TA.stringisdisit(t8.getText())) || !(TA.stringisdisit(month.getText()))
+						|| !(TA.stringisdisit(day.getText())) || !(TA.stringisdisit(year.getText()))) {
+					JOptionPane.showMessageDialog(null, "설립일 또는\n한달백신생산량\n또는 사원 수에\n숫자를 입력하시오.");
+					
+				}else {
 				// TODO Auto-generated method stub
 				try {
-					String filePath = "C:\\Users\\배지훈\\eclipse-workspace\\Teamp\\src\\company\\회사데이터.txt";
+					String filePath = "회사데이터.txt";
 					File file = new File(filePath);
 					if(!file.exists()) {
 						file.createNewFile();
 					}
 					BufferedWriter bos = new BufferedWriter(new FileWriter(file,true));
 					bos.write("백신개발생산기업-");
-					bos.write(t1.getText()+"-");
-					bos.write(t2.getText()+"-");
-					bos.write(t33.getText()+"-"); 
-					bos.write(t4.getText()+"-"); 
+					bos.write(t1.getText()+"-"); //기업이름
+					bos.write(t2.getSelectedItem()+"-"); //백신이름
+					bos.write(t33.getText()+"-"); //판매국가 리스트
+					bos.write(t4.getText()+"-");  // 백신 생산량
 					bos.write(t5.getText()+"-"); //ceo
 					bos.write(month.getText()+"/"+day.getText()+"/"+year.getText()+"-"); // 설립일
 					bos.write(t7.getText()+"-"); // 본사위치
 					bos.write(t8.getText()+"\r\n"); //사원 수
 					bos.close();
+					TA.readtext();
 					JOptionPane.showMessageDialog(null, "저장 완료");
 					GUICompanyMain.model.setNumRows(0);
 					try {
@@ -151,6 +167,7 @@ public class GUIaddHavevaccineComInfo extends JFrame {
 				}catch (Exception ex) {
 					JOptionPane.showMessageDialog(null, "저장 실패");
 				}
+			}
 			}
 		});
 		insertpanel.add(insert);

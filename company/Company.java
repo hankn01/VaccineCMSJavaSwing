@@ -19,6 +19,8 @@ public  abstract class Company {
 		this.setCompanyName(Name);
 		this.setCEO(CEO);
 		this.setDate2(aDate);
+		this.HeadquatersLocation = Location;
+		this.NumberOfEmployee = Num;
 	}
 	
 	public String getCompanyName() {

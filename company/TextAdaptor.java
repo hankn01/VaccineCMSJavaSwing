@@ -17,10 +17,11 @@ public class TextAdaptor {
 	Scanner in = null;
 	PrintWriter out = null;
 	public void readtext() {
+		company.clear();
 		ArrayList<String> pstr = new ArrayList<String>();
 
 		try {
-		in = new Scanner(new FileInputStream("C:\\Users\\배지훈\\eclipse-workspace\\Teamp\\src\\company\\회사데이터.txt"));
+		in = new Scanner(new FileInputStream("회사데이터.txt"));
 		
 		}catch(FileNotFoundException e) {
 			e.printStackTrace();
@@ -85,7 +86,7 @@ public class TextAdaptor {
 				int z =0;
 				StringTokenizer vact = new StringTokenizer(pstr.get(2), "/");
 				while(vact.hasMoreTokens()) {
-					VandC[z] = dt.nextToken();
+					VandC[z] = vact.nextToken();
 					z++;
 				}
 				
@@ -112,8 +113,8 @@ public class TextAdaptor {
 				int z =0;
 				StringTokenizer val = new StringTokenizer(pstr.get(2), "/");
 				while(val.hasMoreTokens()) {
-					VandL[i] = val.nextToken();
-					i++;
+					VandL[z] = val.nextToken();
+					z++;
 				}
 				
 				
@@ -132,7 +133,7 @@ public class TextAdaptor {
 	public void equalizeText() {
 		
 		try {
-		out = new PrintWriter(new FileOutputStream("C:\\Users\\배지훈\\eclipse-workspace\\Teamp\\src\\company\\회사데이터.txt"));
+		out = new PrintWriter(new FileOutputStream("회사데이터.txt"));
 		
 		}catch(FileNotFoundException e) {
 			e.printStackTrace();
@@ -147,10 +148,17 @@ public class TextAdaptor {
 				out.println("백신개발생산기업-"+hv.getCompanyName()+"-"+hv.getVaccine()+"-"+hv.getCountry()+"-"+hv.getVTPM()+"-"
 						+hv.getCEO()+"-"+hv.getDate()+"-"+hv.getHeadquatersLocation()+"-"+hv.getNumberOfEmployee());
 			}else if(c.comtype().equals("Cp")) {
-				//out.println("위탁생산기업-"+);
+				CPcompany Cp = null;
+				Cp = (CPcompany) c;
+				out.println("위탁생산기업-"+Cp.getCompanyName()+"-"+Cp.getVaccine()+"/"+Cp.getApprovedCompany()+"-"+" -"+Cp.getVTPM()+"-"+Cp.getCEO()+"-"
+				+Cp.getDate()+"-"+Cp.getHeadquatersLocation()+"-"+Cp.getNumberOfEmployee());
 				
 			}else if(c.comtype().equals("Ud")){
-				//out.println("백신임상단계기업-"+);
+				UnderDevelopCompany Ud = null;
+				Ud = (UnderDevelopCompany) c;
+				out.println("백신임상단계기업-"+Ud.getCompanyName()+"-"+Ud.getDevelopVaccineName()+"/임상 "
+				+Ud.getClinicalProgress()+"단계- - -"+Ud.getCEO()+"-"+Ud.getDate()+"-"+Ud.getHeadquatersLocation()+"-"+Ud.getNumberOfEmployee());
+				
 				
 			}else {
 				System.err.println("Wrong company type");
@@ -158,8 +166,25 @@ public class TextAdaptor {
 			}
 		}
 		
+		out.close();
+		
+	}
+	
+	public boolean stringisdisit(String s) {
+		boolean output = true;
+		char temp;
+		for(int i=0; i<s.length(); i++) {
+			temp = s.charAt(i);
+			if(Character.isDigit(temp) == false) {
+				output = false;
+			}
+		}
+		return output;
 	}
 
+	public String getcomlist() {
+		return company.toString();
+	}
 	
 	
 }

@@ -19,7 +19,11 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import vaccine.Moderna;
+import vaccine.SideEffect;
+import vaccine.VaccineProduct;
 import vaccine.VaccineType;
+import vaccineView.*;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -38,47 +42,50 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 	
 	public static final int WIDTH = 1050;
 	public static final int HEIGHT = 300;
-	static String header[] = {"ê¸°ì—…ë¶„ë¥˜","ê¸°ì—…ì´ë¦„", "ë°±ì‹ /ê°œë°œë‹¨ê³„", "ë°±ì‹  íŒë§¤êµ­ê°€", "ë°±ì‹  í•œë‹¬ìƒì‚°ëŸ‰", "CEO" , "ì„¤ë¦½ì¼" ,"ë³¸ì‚¬ìœ„ì¹˜", "ì‚¬ì› ìˆ˜"};
+	static String header[] = {"±â¾÷ºĞ·ù","±â¾÷ÀÌ¸§", "¹é½Å/°³¹ß´Ü°è/À§Å¹¿äÃ»±â¾÷", "¹é½Å ÆÇ¸Å±¹°¡", "¹é½Å ÇÑ´Ş»ı»ê·®"};//, "CEO" , "¼³¸³ÀÏ" ,"º»»çÀ§Ä¡", "»ç¿ø ¼ö"
 	static DefaultTableModel model = new DefaultTableModel(null, header);
 	public JTable table = new JTable( model);
 	public JPanel infomenu = new JPanel();
 	public static JPanel in1 = new JPanel();
 	public static JPanel in2 = new JPanel();
 	public boolean addj = true;
-	
+	public TextAdaptor TA = new TextAdaptor();
 	private VaccineType.VaccineTypes[] vaccineTypes = VaccineType.VaccineTypes.values();
 	
 	private ArrayList<Company> companies = new ArrayList<Company>();
 	
 	
-	/*
-	public static void main(String[] args) {
-		GUICompanyMain gui = new GUICompanyMain();
-		
-		gui.setVisible(true);
-		
-
-	}
-	*/
+	
+//	public static void main(String[] args) {
+//		GUICompanyMain gui = new GUICompanyMain();		
+//		gui.setVisible(true); 
+//		
+//
+//	}
 	
 	public GUICompanyMain() {
 		
 		
-		super("ì½”ë¡œë‚˜ ë°±ì‹  íšŒì‚¬");
+		super("ÄÚ·Î³ª ¹é½Å È¸»ç");
 		setSize(WIDTH, HEIGHT);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLayout(new BorderLayout());	
-		
-		this.start(); // í‘œ ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
+		this.setVisible(true);
+		setLocationRelativeTo(null);
+		this.start(); // Ç¥ µ¥ÀÌÅÍ ºÒ·¯¿À±â
 		
 
 		
 		
 		
 		
-		table.setPreferredScrollableViewportSize(new Dimension(1000, 100)); // ìŠ¤í¬ë¡¤ ë°”ì˜ í¬ê¸°
-		table.setFillsViewportHeight(true); //ì»¨í…Œì´ë„ˆì˜ ì „ì²´ë†’ì´ë¥¼ í…Œì´ë¸”ì´ ì „ë¶€ ì‚¬ìš©
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //í…Œì´ë¸” í–‰ì„ í•˜ë‚˜ë§Œ ì„ íƒ ê°€ëŠ¥
+		table.setPreferredScrollableViewportSize(new Dimension(1000, 100)); // ½ºÅ©·Ñ ¹ÙÀÇ Å©±â
+		table.setFillsViewportHeight(true); //ÄÁÅ×ÀÌ³ÊÀÇ ÀüÃ¼³ôÀÌ¸¦ Å×ÀÌºíÀÌ ÀüºÎ »ç¿ë
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //Å×ÀÌºí ÇàÀ» ÇÏ³ª¸¸ ¼±ÅÃ °¡´É
+//		table.getColumnModel().getColumn(3).setWidth(60);
+//		table.getColumnModel().getColumn(3).setMinWidth(60);
+//		table.getColumnModel().getColumn(3).setMaxWidth(60);
 		
 		JPanel tablePanel = new JPanel();
 		tablePanel.setSize(1000, 100);
@@ -107,14 +114,14 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 		GUIaddCompanyinfo gac = new GUIaddCompanyinfo();
 		
 		
-		JButton addC = new JButton("ê¸°ì—… ì¶”ê°€");
+		JButton addC = new JButton("±â¾÷ Ãß°¡");
 		addC.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if(addj == true) {
 				in1.add(gac);
-				in1.revalidate(); // íŒ¨ë„ ì´ˆê¸°í™”í•´ì„œ addë©”ë‰´ë¥¼ ì¶œë ¥
+				in1.revalidate(); // ÆĞ³Î ÃÊ±âÈ­ÇØ¼­ add¸Ş´º¸¦ Ãâ·Â
 				addj = false;
 				}else {
 					in1.remove(gac);
@@ -131,24 +138,35 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 		
 		
 		
-		JButton addS = new JButton("íšŒì‚¬ ìƒì„¸ ì •ë³´");
+		JButton addS = new JButton("È¸»ç ¼¼ºÎ Á¤º¸");
 		addS.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				int selectrow = table.getSelectedRow();
+				if(selectrow == -1) {
+					JOptionPane.showMessageDialog(table, "ÇàÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
+					return;
+				}else {
+					Object seltype = model.getValueAt(selectrow, 0);
+					Object selname = model.getValueAt(selectrow, 1);
+					new SeeDetailGUI(seltype, selname);
+				}
 						
 			}			
 		});
+		buttonpanel.add(addS);
 	
 		
-		JButton reset = new JButton("ìƒˆë¡œ ê³ ì¹¨");
+		JButton reset = new JButton("»õ·Î °íÄ§"); // ÅØ½ºÆ® -> Å×ÀÌºí µ¿±âÈ­
 		reset.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				model.setNumRows(0);
-				String filePath = "C:\\Users\\ë°°ì§€í›ˆ\\eclipse-workspace\\Teamp\\src\\company\\íšŒì‚¬ë°ì´í„°.txt";
+				String filePath = "È¸»çµ¥ÀÌÅÍ.txt";
 				File file = new File(filePath);
+				
 				if(file.exists()) {
 					try {
 						String s;
@@ -180,18 +198,18 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 		
 		
 		
-		JButton del = new JButton("ì‚­ì œ");
+		JButton del = new JButton("»èÁ¦");
 		del.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				int selectrow = table.getSelectedRow();
 				if(selectrow == -1) {
-					JOptionPane.showMessageDialog(table, "ì‚­ì œí•  í–‰ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+					JOptionPane.showMessageDialog(table, "»èÁ¦ÇÒ ÇàÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
 					return;
 				}
 				String dummy ="";
-				String filePath = "C:\\Users\\ë°°ì§€í›ˆ\\eclipse-workspace\\Teamp\\src\\company\\íšŒì‚¬ë°ì´í„°.txt";
+				String filePath = "È¸»çµ¥ÀÌÅÍ.txt";
 				File file = new File(filePath);
 				try {
 					BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -213,6 +231,7 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 					e1.printStackTrace();
 				}
 
+				TA.readtext(); // ÅØ½ºÆ® -> È¸»ç °´Ã¼ ¸®½ºÆ® µ¿±âÈ­
 				reset.doClick();
 
 				
@@ -224,12 +243,12 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 		
 		
 		
-		JLabel expl = new JLabel("ë²„íŠ¼ì„ ë‘ ë²ˆ ëˆ„ë¥¼ ì‹œ ì„¸ë¶€ ì‚¬í•­ ë‹«ìŒ");
+		JLabel expl = new JLabel("¹öÆ°À» µÎ ¹ø ´©¸¦ ½Ã ¼¼ºÎ »çÇ× ´İÀ½");
 		buttonpanel.add(expl);
 		
 		add(buttonpanel, BorderLayout.NORTH);
 		
-		this.setVisible(true);
+		
 		
 	}
 
@@ -244,7 +263,7 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 	}
 	
 	public void start() {
-		String filePath = "C:\\Users\\ë°°ì§€í›ˆ\\eclipse-workspace\\Teamp\\src\\company\\íšŒì‚¬ë°ì´í„°.txt";
+		String filePath = "È¸»çµ¥ÀÌÅÍ.txt";
 		File file = new File(filePath);
 		if(file.exists()) {
 			try {
@@ -266,6 +285,8 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 			}
 			
 		}
+		
+		TA.readtext();
 		
 	}
 

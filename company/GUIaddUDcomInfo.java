@@ -1,8 +1,10 @@
 package company;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -22,6 +24,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class GUIaddUDcomInfo extends JFrame implements ActionListener{
+	
+	Dimension frameSize = this.getSize(); // 프레임 사이즈
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // 모니터 사이즈
+	TextAdaptor TA = new TextAdaptor();
+
 
 	public GUIaddUDcomInfo() {
 
@@ -31,6 +38,8 @@ public class GUIaddUDcomInfo extends JFrame implements ActionListener{
 		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setLocation((screenSize.width - frameSize.width)/2, (screenSize.height - frameSize.height)/2);
 
 		JPanel form = new JPanel();
 		form.setLayout(new GridLayout(7,2,5,5));
@@ -56,7 +65,7 @@ public class GUIaddUDcomInfo extends JFrame implements ActionListener{
 		JTextField t4 = new JTextField();
 		JTextField t5 = new JTextField();
 		JTextField t7 = new JTextField();
-		String [] num = {"임상 1단계", "임상 2단계", "임상 3단계"};
+		String [] num = {"임상1단계", "임상2단계", "임상3단계"};
 		JComboBox t8 = new JComboBox(num);
 		
 		
@@ -96,8 +105,13 @@ public class GUIaddUDcomInfo extends JFrame implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
+				if(!(TA.stringisdisit(t5.getText())) || !(TA.stringisdisit(month.getText()))
+						|| !(TA.stringisdisit(day.getText())) || !(TA.stringisdisit(year.getText()))) {
+					JOptionPane.showMessageDialog(null, "설립일 또는\n한달백신생산량\n또는 사원 수에\n숫자를 입력하시오.");
+				}else {
 				try {
-					String filePath = "C:\\Users\\배지훈\\eclipse-workspace\\Teamp\\src\\company\\회사데이터.txt";
+					String filePath = "회사데이터.txt";
 					File file = new File(filePath);
 					if(!file.exists()) {
 						file.createNewFile();
@@ -113,6 +127,7 @@ public class GUIaddUDcomInfo extends JFrame implements ActionListener{
 					bos.write(t4.getText()+"-"); // 본사위치
 					bos.write(t5.getText()+"\r\n"); //사원 수
 					bos.close();
+					TA.readtext();
 					JOptionPane.showMessageDialog(null, "저장 완료");
 					GUICompanyMain.model.setNumRows(0);
 					try {
@@ -141,6 +156,7 @@ public class GUIaddUDcomInfo extends JFrame implements ActionListener{
 				}
 				
 			}
+				}
 		});
 		insertpanel.add(insert);
 		add(insertpanel, BorderLayout.SOUTH);

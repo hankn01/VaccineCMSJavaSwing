@@ -39,7 +39,7 @@ public class CPcompany extends Company{
 		this.VPTM = avptn;
 	}
 	
-	public double getVTPM(){
+	public int getVTPM(){
 		return this.VPTM;
 	}
 	
@@ -58,6 +58,8 @@ public class CPcompany extends Company{
 	public void setApprovedCompany(String approvedCompany) {
 		ApprovedCompany = approvedCompany;
 	}
+	
+
 
 	//public void addCountry(Country aCountry) {
 	//	PVC.add(aCountry);
