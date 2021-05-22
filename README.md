@@ -39,10 +39,11 @@
   * LocalVaccineControl.java
   * NationalStockScreen.java
   * NationalVaccineControl.java
-* CountryInit (내부 클래스 구현 - 구현 예정)
+* CountryInit (내부 클래스 구현 - 일부 구현 완료)
   * Country.java
   * LocalGov.java
   * CAUTION: This can be changed by the plan or program of other members.
+  * Company, Vaccine Class를 import하여 프로그램 작성 및 테스트 예정
 
 > MODEL   
 ![Alt vaccineModel](./vaccineModelStructure.jpg)
