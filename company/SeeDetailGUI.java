@@ -20,12 +20,12 @@ public class SeeDetailGUI extends JFrame {
 	
 	TextAdaptor TA = new TextAdaptor();
 	
-
+	Vaccine vaccineOfThisCompany = null; // Kanei0415
 	
 	public SeeDetailGUI(Object seltype, Object selname) {
 		
 		
-		setTitle("È¸»ç ¼¼ºÎ Á¤º¸");
+		setTitle("È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		setLayout(new BorderLayout());
 		setSize(500, 500);
 		setResizable(false);
@@ -39,7 +39,7 @@ public class SeeDetailGUI extends JFrame {
 		buttonpanel.setLayout(new GridLayout(2,1, 10, 10));
 		add(buttonpanel, BorderLayout.SOUTH);
 		
-		JButton close = new JButton("´Ý±â");
+		JButton close = new JButton("ï¿½Ý±ï¿½");
 		close.addActionListener(new ActionListener() {
 
 			@Override
@@ -61,7 +61,7 @@ public class SeeDetailGUI extends JFrame {
 		System.out.println(selname);
 		
 
-		if(Comtype.equals("¹é½Å°³¹ß»ý»ê±â¾÷")) {
+		if(Comtype.equals("ï¿½ï¿½Å°ï¿½ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½")) {
 			HaverVaccineCompany dc = new HaverVaccineCompany();
 				for(Company c: TA.company) {
 					if(c.getCompanyName().equals(selname)) {
@@ -71,18 +71,27 @@ public class SeeDetailGUI extends JFrame {
 				JPanel datapanel =new JPanel();
 				add(datapanel, BorderLayout.CENTER);
 				datapanel.setLayout(new GridLayout(8,2,15,15));
-				JLabel l1 = new JLabel("È¸»çÀÌ¸§");
+				JLabel l1 = new JLabel("È¸ï¿½ï¿½ï¿½Ì¸ï¿½");
 				JLabel d1 = new JLabel(dc.getCompanyName());
 				datapanel.add(l1);
 				datapanel.add(d1);
-				JLabel l2 = new JLabel("¹é½Å");
+				JLabel l2 = new JLabel("ï¿½ï¿½ï¿½");
 				JButton d2 = new JButton(dc.getVaccine());
 				d2.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						
-						//new VaccineMainMenu();
+						// Kanei0415
+						String vaccineTypeFromInput = vaccineTypeTextField.getText().toString().lower();
+
+						// Kanei0415
+						switch(vaccineTypeFromInput) {
+							case "morderna": vaccineOfThisCompany = new Morderna(Variables For Arguments);
+								break;
+							case "yansen": vaccineOfThisCompany = new Yansen(Variables For Arguments);
+								break;
+							... All of Cases
+						}
 						
 					}
 					
@@ -90,11 +99,11 @@ public class SeeDetailGUI extends JFrame {
 				});
 				datapanel.add(l2);
 				datapanel.add(d2);
-				JLabel l3 = new JLabel("ÆÇ¸Å ±¹°¡");
+				JLabel l3 = new JLabel("ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½");
 				JLabel d3 = new JLabel(dc.getCountry());
 				datapanel.add(l3);
 				datapanel.add(d3);
-				JLabel l4 = new JLabel("ÇÑ´Þ ¹é½Å »ý»ê·®");
+				JLabel l4 = new JLabel("ï¿½Ñ´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ê·®");
 				JLabel d4 = new JLabel(Integer.toString(dc.getVTPM()));
 				datapanel.add(l4);
 				datapanel.add(d4);
@@ -102,15 +111,15 @@ public class SeeDetailGUI extends JFrame {
 				JLabel d5 = new JLabel(dc.getCEO());
 				datapanel.add(l5);
 				datapanel.add(d5);
-				JLabel l6 = new JLabel("¼³¸³ÀÏ");
+				JLabel l6 = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				JLabel d6 = new JLabel(dc.getDate());
 				datapanel.add(l6);
 				datapanel.add(d6);
-				JLabel l7 = new JLabel("º»»çÀ§Ä¡");
+				JLabel l7 = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡");
 				JLabel d7 = new JLabel(dc.getHeadquatersLocation());
 				datapanel.add(l7);
 				datapanel.add(d7);
-				JLabel l8 = new JLabel("»ç¿ø ¼ö");
+				JLabel l8 = new JLabel("ï¿½ï¿½ï¿½ ï¿½ï¿½");
 				JLabel d8 = new JLabel(Integer.toString(dc.getNumberOfEmployee()));
 				datapanel.add(l8);
 				datapanel.add(d8);
@@ -118,7 +127,7 @@ public class SeeDetailGUI extends JFrame {
 
 			 
 
-		}else if(Comtype.equals("À§Å¹»ý»ê±â¾÷")) {
+		}else if(Comtype.equals("ï¿½ï¿½Å¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")) {
 			CPcompany dc = new CPcompany();
 				for(Company c: TA.company) {
 					if(c.getCompanyName().equals(selname)) {
@@ -127,19 +136,18 @@ public class SeeDetailGUI extends JFrame {
 					JPanel datapanel =new JPanel();
 					add(datapanel, BorderLayout.CENTER);
 					datapanel.setLayout(new GridLayout(8,2,15,15));
-					JLabel l1 = new JLabel("È¸»çÀÌ¸§");
+					JLabel l1 = new JLabel("È¸ï¿½ï¿½ï¿½Ì¸ï¿½");
 					JLabel d1 = new JLabel(dc.getCompanyName());
 					datapanel.add(l1);
 					datapanel.add(d1);
-					JLabel l2 = new JLabel("¹é½Å");
+					JLabel l2 = new JLabel("ï¿½ï¿½ï¿½");
 					JButton d2 = new JButton(dc.getVaccine());
 					d2.addActionListener(new ActionListener() {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							
-							//new VaccineMainMenu();
-							
+							// Kanei0415
+							new VaccineMainMenu(vaccineOfThisCompany);
 						}
 						
 						
@@ -147,7 +155,7 @@ public class SeeDetailGUI extends JFrame {
 					datapanel.add(l2);
 					datapanel.add(d2);
 
-					JLabel l4 = new JLabel("ÇÑ´Þ ¹é½Å »ý»ê·®");
+					JLabel l4 = new JLabel("ï¿½Ñ´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ê·®");
 					JLabel d4 = new JLabel(Integer.toString(dc.getVTPM()));
 					datapanel.add(l4);
 					datapanel.add(d4);
@@ -155,19 +163,19 @@ public class SeeDetailGUI extends JFrame {
 					JLabel d5 = new JLabel(dc.getCEO());
 					datapanel.add(l5);
 					datapanel.add(d5);
-					JLabel l6 = new JLabel("¼³¸³ÀÏ");
+					JLabel l6 = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					JLabel d6 = new JLabel(dc.getDate());
 					datapanel.add(l6);
 					datapanel.add(d6);
-					JLabel l7 = new JLabel("º»»çÀ§Ä¡");
+					JLabel l7 = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡");
 					JLabel d7 = new JLabel(dc.getHeadquatersLocation());
 					datapanel.add(l7);
 					datapanel.add(d7);
-					JLabel l8 = new JLabel("»ç¿ø ¼ö");
+					JLabel l8 = new JLabel("ï¿½ï¿½ï¿½ ï¿½ï¿½");
 					JLabel d8 = new JLabel(Integer.toString(dc.getNumberOfEmployee()));
 					datapanel.add(l8);
 					datapanel.add(d8);
-					JLabel l9 = new JLabel("À§Å¹¿äÃ»±â¾÷");
+					JLabel l9 = new JLabel("ï¿½ï¿½Å¹ï¿½ï¿½Ã»ï¿½ï¿½ï¿½");
 					JLabel d9 = new JLabel(dc.getApprovedCompany());
 					datapanel.add(l9);
 					datapanel.add(d9);
@@ -188,31 +196,31 @@ public class SeeDetailGUI extends JFrame {
 				JPanel datapanel =new JPanel();
 				add(datapanel, BorderLayout.CENTER);
 				datapanel.setLayout(new GridLayout(8,2,15,15));
-				JLabel l1 = new JLabel("È¸»çÀÌ¸§");
+				JLabel l1 = new JLabel("È¸ï¿½ï¿½ï¿½Ì¸ï¿½");
 				JLabel d1 = new JLabel(dc.getCompanyName());
 				datapanel.add(l1);
 				datapanel.add(d1);
-				JLabel l2 = new JLabel("°³¹ß ÁßÀÎ ¹é½Å ÀÌ¸§");
+				JLabel l2 = new JLabel("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½");
 				JLabel d2 = new JLabel(dc.getDevelopVaccineName());
 				datapanel.add(l2);
 				datapanel.add(d2);				
-				JLabel l3 = new JLabel("ÀÓ»ó ´Ü°è");
-				JLabel d3 = new JLabel("ÀÓ»ó "+dc.getClinicalProgress()+"´Ü°è");
+				JLabel l3 = new JLabel("ï¿½Ó»ï¿½ ï¿½Ü°ï¿½");
+				JLabel d3 = new JLabel("ï¿½Ó»ï¿½ "+dc.getClinicalProgress()+"ï¿½Ü°ï¿½");
 				datapanel.add(l3);
 				datapanel.add(d3);
 				JLabel l5 = new JLabel("CEO");
 				JLabel d5 = new JLabel(dc.getCEO());
 				datapanel.add(l5);
 				datapanel.add(d5);
-				JLabel l6 = new JLabel("¼³¸³ÀÏ");
+				JLabel l6 = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				JLabel d6 = new JLabel(dc.getDate());
 				datapanel.add(l6);
 				datapanel.add(d6);
-				JLabel l7 = new JLabel("º»»çÀ§Ä¡");
+				JLabel l7 = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡");
 				JLabel d7 = new JLabel(dc.getHeadquatersLocation());
 				datapanel.add(l7);
 				datapanel.add(d7);
-				JLabel l8 = new JLabel("»ç¿ø ¼ö");
+				JLabel l8 = new JLabel("ï¿½ï¿½ï¿½ ï¿½ï¿½");
 				JLabel d8 = new JLabel(Integer.toString(dc.getNumberOfEmployee()));
 				datapanel.add(l8);
 				datapanel.add(d8);
