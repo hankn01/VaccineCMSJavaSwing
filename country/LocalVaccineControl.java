@@ -2,6 +2,7 @@ package country;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
@@ -11,19 +12,38 @@ public class LocalVaccineControl extends JFrame{
 	
 	public LocalVaccineControl()
 	{
-		super("Áö¿ªº° Àç°í ÇÒ´ç");
+		super("ì§€ì—­ë³„ ì¬ê³  í• ë‹¹");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(WIDTH,HEIGHT);
 		this.setLayout(new BorderLayout());
 		
-		JComboBox selectCompany = new JComboBox();
-		this.add(selectCompany,BorderLayout.NORTH);
+		JPanel upPanel = new JPanel();
+		upPanel.setLayout(new BorderLayout());
 		
+		JComboBox selectCompany = new JComboBox();
+		
+		
+		selectCompany.addItem("-----ë°±ì‹  íšŒì‚¬ ì„ íƒ------");
+		
+		
+		upPanel.add(selectCompany,BorderLayout.NORTH);
+		
+		
+		
+		
+		JComboBox selectLoc = new JComboBox();
+		
+		selectLoc.addItem("-----ì§€ì—­ ì„ íƒ-----");
+		
+		upPanel.add(selectLoc,BorderLayout.SOUTH);
+		
+		
+		this.add(upPanel,BorderLayout.NORTH);
 		JTextArea LocArc = new JTextArea();
-		LocArc.setText("Áö¿ª ¹× ¼ö·® ÀÔ·Â");
+		LocArc.setText("ì§€ì—­ ë° ìˆ˜ëŸ‰ ì…ë ¥");
 		this.add(LocArc,BorderLayout.CENTER);
 		
-		JButton Allowcate = new JButton("ÇÒ´ç");
+		JButton Allowcate = new JButton("í• ë‹¹");
 		
 		this.add(Allowcate,BorderLayout.SOUTH);
 		
