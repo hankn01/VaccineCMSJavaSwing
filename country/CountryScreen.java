@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -11,48 +12,91 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import vaccine.Date;
+import vaccine.Moderna;
+import vaccine.VaccineProduct;
+import vaccine.SideEffect.SideEffects;
+import vaccineView.VaccineMainMenu;
 public class CountryScreen extends JFrame{
 
-	public static final int WIDTH = 250;
+	public static final int WIDTH = 350;
 	public static final int HEIGHT = 120;
-	
+	Country ct = new Country();
 	public CountryScreen()
 	{
-		super("¹é½Å¾îµø¾î PRO - ÇöÀç ¹é½Å ÇöÈ²");
-	
+		super("ë°±ì‹ ì–´ë”¨ì–´ PRO - í˜„ì¬ ë°±ì‹  í˜„í™©");
+		this.setTitle("ë°±ì‹ ì–´ë”¨ì–´ PRO - í˜„ì¬ êµ­ê°€ ë°±ì‹  í˜„í™©");
 		JFrame CountryWindow = new JFrame();
 		CountryWindow.setSize(WIDTH, HEIGHT);
 		CountryWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		CountryWindow.setLayout(new BorderLayout());
 		
 		JLabel CountryName = new JLabel();
-		CountryName.setText("±¹°¡¸í : "+"´ëÇÑ¹Î±¹(Republic of Korea)");
+		CountryName.setText("ë°±ì‹ ì–´ë”¨ì–´ PRO");
 		
 		
 		JLabel CurrentBudget = new JLabel();
-		CurrentBudget.setText("ÇöÀç ¿¹»ê(ÄÚ·Î³ª 19 ¹é½Å Æí¼º) :\n"+"Å×½ºÆ® ´Ş·¯");
+		CurrentBudget.setText("í˜„ì¬ ì˜ˆì‚°(ì½”ë¡œë‚˜ 19 ë°±ì‹  í¸ì„±) :\n"+"í…ŒìŠ¤íŠ¸ ë‹¬ëŸ¬");
+		
+		
 		
 		JPanel downPanel = new JPanel();
 		downPanel.setLayout(new BorderLayout());
 		
 		
-		JButton NationStock = new JButton("Àü±¹ Àç°í ÇöÈ²");
+		JButton NationStock = new JButton("ì „êµ­ ì¬ê³  í˜„í™©");
 		
-		JButton LocalStock = new JButton("Áö¿ªº° Àç°í ÇöÈ²");
+		
+		
+		
+		JButton LocalStock = new JButton("ì§€ì—­ë³„ ì¬ê³  í˜„í™©");
+		
+		
+		JButton setBudget = new JButton("ì˜ˆì‚° ì„¤ì •");
 		
 		NationStock.addActionListener(new ListenerClass());
-		NationStock.setActionCommand("±¹°¡");
+		NationStock.setActionCommand("êµ­ê°€");
 		LocalStock.addActionListener(new ListenerClass());
-		LocalStock.setActionCommand("Áö¿ª");
+		LocalStock.setActionCommand("ì§€ì—­");
 		
 		CountryWindow.add(CountryName,BorderLayout.NORTH);
 		CountryWindow.add(CurrentBudget,BorderLayout.CENTER);
 		downPanel.add(NationStock,BorderLayout.WEST);
-		downPanel.add(LocalStock,BorderLayout.EAST);
+		downPanel.add(LocalStock,BorderLayout.CENTER);
+		downPanel.add(setBudget,BorderLayout.EAST);
 		
 		CountryWindow.add(downPanel,BorderLayout.SOUTH);
 		
 		CountryWindow.setVisible(true);
+		
+		
+		
+		
+		
+		//stub code
+		
+		double cost = 100;
+		String RNAName = "MRNA-1273";
+		double protectionRate = 90;
+		double coldChainDegree = -70;
+		int inoculationTime = 2;
+		SideEffects[] sideEffects = {SideEffects.Pain, SideEffects.Blush, SideEffects.Swelling, SideEffects.Fatigue, SideEffects.Headache};
+		
+		double sideEffectRisk = 0.5;
+		
+		ArrayList<VaccineProduct> inventory = new ArrayList<VaccineProduct>(0);
+		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,13), new Date(2021,5,20)));
+		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,14), new Date(2021,5,21)));
+		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,15), new Date(2021,5,22)));
+		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,16), new Date(2021,5,23)));
+		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,17), new Date(2021,5,24)));
+		
+		VaccineMainMenu vmm = new VaccineMainMenu(new Moderna(
+				cost, protectionRate, coldChainDegree, inoculationTime, sideEffectRisk, sideEffects, inventory, RNAName
+		));
+		
+		
+		
 		
 	}
 	
@@ -60,17 +104,17 @@ public class CountryScreen extends JFrame{
 	class ListenerClass implements ActionListener {
 		public void actionPerformed(ActionEvent e)
 		{
-			if(e.getActionCommand().equals("±¹°¡"))
+			if(e.getActionCommand().equals("êµ­ê°€"))
 			{
 				NationalStockScreen nsc = new NationalStockScreen();
 			}
-			else if(e.getActionCommand().equals("Áö¿ª"))
+			else if(e.getActionCommand().equals("ì§€ì—­"))
 			{
 				LocalStockScreen lsc = new LocalStockScreen();
 			}
 			else
 			{
-				JOptionPane.showMessageDialog(null, "ÇÁ·Î±×·¥ ¿À·ù ¹ß»ı(ÄÚµå 201)");
+				JOptionPane.showMessageDialog(null, "í”„ë¡œê·¸ë¨ ì˜¤ë¥˜ ë°œìƒ(ì½”ë“œ 201)");
 			}
 		}
 		
