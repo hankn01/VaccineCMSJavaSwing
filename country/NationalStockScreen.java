@@ -16,7 +16,7 @@ public class NationalStockScreen extends JFrame{
 	
 	
 	
-	//Å¬·¡½º ¿¬µ¿ Àü±îÁö ÀÓ½Ã·Î »ç¿ëÇÏ´Â ½ºÅÓ º¯¼öÀÔ´Ï´Ù.	
+	//í´ë˜ìŠ¤ ì—°ë™ ì „ê¹Œì§€ ì„ì‹œë¡œ ì‚¬ìš©í•˜ëŠ” ìŠ¤í… ë³€ìˆ˜ì…ë‹ˆë‹¤.	
 	/**
 	 * 
 	 */
@@ -27,40 +27,44 @@ public class NationalStockScreen extends JFrame{
 	private static int Moderna;
 	private static int Sputnik_V;
 	private static int Janssen;
-	//ÀÓ½Ã º¯¼ö ³¡
+	//ì„ì‹œ ë³€ìˆ˜ ë
 	
 	public NationalStockScreen ()
 	{
-		super("Àü±¹ ¹é½Å Àç°í ÇöÈ² ¹× Á¢Á¾ ÇöÈ²");
+		super("ì „êµ­ ë°±ì‹  ì¬ê³  í˜„í™© ë° ì ‘ì¢… í˜„í™©");
 		this.setSize(300,300);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
 		JLabel Population = new JLabel();
-		Population.setText("ÇöÀç ¹é½Å Á¢Á¾ ÀÎ±¸: ");
+		Population.setText("í˜„ì¬ ë°±ì‹  ì ‘ì¢… ì¸êµ¬: ");
 		
 		JLabel NatStock = new JLabel();
-		NatStock.setText("<html>Àü±¹ ¹é½Å Àç°í(È¸»çº°): <br>AZ: <br>Pfizer: <br>Moderna: <br> </html>");
+		NatStock.setText("<html>ì „êµ­ ë°±ì‹  ì¬ê³ (íšŒì‚¬ë³„): <br>AZ: <br>Pfizer: <br>Moderna: <br> </html>");
 		
 		
-		JButton CompanyButton = new JButton("¹é½Å È¸»ç °ü¸®");
+		
+		JPanel downPanel = new JPanel();
+		downPanel.setLayout(new BorderLayout());
+		
+		JButton CompanyButton = new JButton("ë°±ì‹  íšŒì‚¬ ê´€ë¦¬");
 		CompanyButton.addActionListener(new ListenerClass());
 		
+		downPanel.add(CompanyButton,BorderLayout.NORTH);
 		
-		
-		JButton NatControl = new JButton("¹é½Å °ü¸®");
+		JButton NatControl = new JButton("ë°±ì‹  ê´€ë¦¬");
 		NatControl.addActionListener(new ListenerClass());
 		
+		downPanel.add(NatControl,BorderLayout.SOUTH);
 		
 		
-		NatControl.setActionCommand("±¹°¡°ü¸®");
-		CompanyButton.setActionCommand("È¸»ç°ü¸®");
+		
+		
+		NatControl.setActionCommand("êµ­ê°€ê´€ë¦¬");
+		CompanyButton.setActionCommand("íšŒì‚¬ê´€ë¦¬");
 		add(Population,BorderLayout.NORTH);
 		add(NatStock,BorderLayout.CENTER);
-		add(NatControl,BorderLayout.SOUTH);
-		add(CompanyButton,BorderLayout.EAST);
-		
-		
+		add(downPanel,BorderLayout.SOUTH);
 		
 		this.setVisible(true);
 		
@@ -70,13 +74,13 @@ public class NationalStockScreen extends JFrame{
 	class ListenerClass implements ActionListener {
 		public void actionPerformed(ActionEvent e)
 		{
-			if(e.getActionCommand().equals("±¹°¡°ü¸®"))
+			if(e.getActionCommand().equals("êµ­ê°€ê´€ë¦¬"))
 			{
 				NationalVaccineControl nvc = new NationalVaccineControl();
 			}
-			else if(e.getActionCommand().equals("È¸»ç°ü¸®"))
+			else if(e.getActionCommand().equals("íšŒì‚¬ê´€ë¦¬"))
 			{
-				//Å×½ºÆ®¸¦ À§ÇØ ±¸Çöº¸·ù
+				//í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•´ êµ¬í˜„ë³´ë¥˜
 				GUICompanyMain cmain = new GUICompanyMain();
 			}
 		}
