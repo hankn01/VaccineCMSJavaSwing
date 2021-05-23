@@ -21,7 +21,7 @@ public class LandingPage extends JFrame {
 	public LandingPage() {
 		super();
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLayout(new BorderLayout());
 		setTitle("Vaccine CMS by Team1");
 		

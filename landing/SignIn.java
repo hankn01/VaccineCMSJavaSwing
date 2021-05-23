@@ -27,7 +27,7 @@ implements ActionListener{
 		
 		JPanel idInputForm = new JPanel();
 		
-		JLabel idPrompt = new JLabel("ID : ");
+		JLabel idPrompt = new JLabel("idInput : ");
 		idInputForm.add(idPrompt, BorderLayout.EAST);
 		
 		idInput = new JTextField(ID_DIGIT);
@@ -38,7 +38,7 @@ implements ActionListener{
 		
 		JPanel pwInputForm = new JPanel();
 		
-		JLabel pwPrompt = new JLabel("PW : ");
+		JLabel pwPrompt = new JLabel("pwInput : ");
 		pwInputForm.add(pwPrompt, BorderLayout.EAST);
 		
 		pwInput = new JTextField(ID_DIGIT);
@@ -49,7 +49,7 @@ implements ActionListener{
 		
 		JPanel pwCheckForm = new JPanel();
 		
-		JLabel pwCheckPrompt = new JLabel("PW Check : ");
+		JLabel pwCheckPrompt = new JLabel("pwCheck : ");
 		pwCheckForm.add(pwCheckPrompt, BorderLayout.EAST);
 		
 		pwCheck = new JTextField(ID_DIGIT);
@@ -79,6 +79,10 @@ implements ActionListener{
 			
 			if(password.equals(passwordCheck)) {
 				pw.println(id + "-" + password);
+				
+				idInput.setText("SignIn was Success");
+				pwInput.setText("SignIn was Success");
+				pwCheck.setText("SignIn was Success");
 			} else {
 				pwCheck.setText("The password is different.");
 			}

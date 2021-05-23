@@ -10,11 +10,11 @@ public class EffectivenessContents extends JPanel {
 	public static final String[] HEADER = {"Age", "Risk(%)", "Effectiveness(%)", "Inoculationable"};
 	
 	private double[] risks = {
-			0,0,0,0,0,0,0,0,0,0
+			1.2,1.3,1.5,1.2,1.2,1.1,1.1,1,1,0.9
 	};
 	
 	private double[] effectiveness = {
-			0,0,0,0,0,0,0,0,0,0
+			1.1,1.2,1.3,1.4,1.5,1.7,1.8,1.9,2.1,2
 	};
 	
 	private String[][] body = new String[risks.length][HEADER.length];
