@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class LocalGov {
 	private String LocalName;
-	private ArrayList<VaccineLocation> VCL; //´Ù¸¥ Á¶¿øÀÇ °á°ú¿Í ¿¬µ¿
+	private ArrayList<VaccineLocation> VCL; //ë‹¤ë¥¸ ì¡°ì›ì˜ ê²°ê³¼ì™€ ì—°ë™
 	private int VaccinationAmount;
 	private int Population;
 	private int Amount;
@@ -16,6 +16,17 @@ public class LocalGov {
 		VaccinationAmount = 0;
 		Population = 0;
 	}
+	
+	public LocalGov(String name, int Population, int VaccinationAmount, int CurAmount)
+	{
+		this.LocalName = name;
+		this.Population = Population;
+		this.VaccinationAmount = VaccinationAmount;
+		this.Amount = CurAmount;
+		
+		
+	}
+	//í´ë˜ìŠ¤ í˜‘ì˜ ê²°ê³¼ì— ë”°ë¼ ìƒì„±ìëŠ” ìˆ˜ì •ë  ìˆ˜ ìˆìŒ.
 	
 	public void addLocation(String LocName, String Addr)
 	{
