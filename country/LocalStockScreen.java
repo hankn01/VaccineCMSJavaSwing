@@ -14,7 +14,7 @@ public class LocalStockScreen extends JFrame{
 
 	
 	
-	//Å¬·¡½º ¿¬µ¿ Àü±îÁö ÀÓ½Ã·Î »ç¿ëÇÏ´Â ½ºÅÓ º¯¼öÀÔ´Ï´Ù.	
+	//í´ë˜ìŠ¤ ì—°ë™ ì „ê¹Œì§€ ì„ì‹œë¡œ ì‚¬ìš©í•˜ëŠ” ìŠ¤í… ë³€ìˆ˜ì…ë‹ˆë‹¤.	
 	/**
 	 * 
 	 */
@@ -25,18 +25,35 @@ public class LocalStockScreen extends JFrame{
 	private static int Moderna;
 	private static int Sputnik_V;
 	private static int Janssen;
-	//ÀÓ½Ã º¯¼ö ³¡
+	//ì„ì‹œ ë³€ìˆ˜ ë
 	
 	public LocalStockScreen()
 	{
-		super("Áö¿ªº° Àç°í ÇöÈ² ¹× Á¢Á¾ ÇöÈ²");
+		super("ì§€ì—­ë³„ ì¬ê³  í˜„í™© ë° ì ‘ì¢… í˜„í™©");
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		
 		JComboBox SelectLocation = new JComboBox();
-		SelectLocation.setToolTipText("Áö¿ª ¼±ÅÃ µå·Ó´Ù¿î ¸Ş´º");
+		SelectLocation.setToolTipText("ì§€ì—­ ì„ íƒ ë“œë¡­ë‹¤ìš´ ë©”ë‰´");
+		SelectLocation.addItem("ì„œìš¸");
+		SelectLocation.addItem("ê²½ê¸°");
+		SelectLocation.addItem("ì¸ì²œ");
+		SelectLocation.addItem("ë¶€ì‚°");
+		SelectLocation.addItem("ëŒ€êµ¬");
+		SelectLocation.addItem("ëŒ€ì „");
+		SelectLocation.addItem("ìš¸ì‚°");
 		
+		SelectLocation.addItem("ê´‘ì£¼");
+		SelectLocation.addItem("ì„¸ì¢…");
+		SelectLocation.addItem("ì¶©ë¶");
+		SelectLocation.addItem("ì¶©ë‚¨");
+		SelectLocation.addItem("ê²½ë¶");
+		SelectLocation.addItem("ê²½ë‚¨");
+		SelectLocation.addItem("ê°•ì›");
+		SelectLocation.addItem("ì œì£¼");
+		SelectLocation.addItem("ì „ë¶");
+		SelectLocation.addItem("ì „ë‚¨");
 		
 		
 		add(SelectLocation,BorderLayout.NORTH);
@@ -45,14 +62,14 @@ public class LocalStockScreen extends JFrame{
 		downPanel.setLayout(new BorderLayout());
 		
 		JLabel selectLocation = new JLabel();
-		selectLocation.setText("Áö¿ªÀ» ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.");
+		selectLocation.setText("ì§€ì—­ì„ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.");
 		
 		JLabel result = new JLabel();
-		result.setText("<html>¼±ÅÃ Áö¿ªÀÇ ¹é½Å ÇöÈ²ÀÔ´Ï´Ù.<br>¹é½Å Á¢Á¾ Àå¼Ò:<br>¹é½Å Á¢Á¾ ÀÎ±¸:<br>¹é½Å Á¢Á¾·ü:<br>¿¬·É´ëº° Á¢Á¾·ü:<br></html>");
+		result.setText("<html>ì„ íƒ ì§€ì—­ì˜ ë°±ì‹  í˜„í™©ì…ë‹ˆë‹¤.<br>ë°±ì‹  ì ‘ì¢… ì¥ì†Œ:<br>ë°±ì‹  ì ‘ì¢… ì¸êµ¬:<br>ë°±ì‹  ì ‘ì¢…ë¥ :<br>ì—°ë ¹ëŒ€ë³„ ì ‘ì¢…ë¥ :<br>ë‚¨ì€ ë°±ì‹ : <br></html>");
 		
-		JButton controlLocal = new JButton("Áö¿ªº° Àç°í ÇÒ´ç ¹× Áö¿ª ¹é½Å °ü¸®");
+		JButton controlLocal = new JButton("ì§€ì—­ë³„ ì¬ê³  í• ë‹¹ ë° ì§€ì—­ ë°±ì‹  ê´€ë¦¬");
 		controlLocal.addActionListener(new ListenerClass());
-		controlLocal.setActionCommand("°ü¸®");
+		controlLocal.setActionCommand("ê´€ë¦¬");
 		
 		
 		downPanel.add(selectLocation,BorderLayout.NORTH);
@@ -71,7 +88,7 @@ public class LocalStockScreen extends JFrame{
 	class ListenerClass implements ActionListener {
 		public void actionPerformed(ActionEvent e)
 		{
-			if(e.getActionCommand().equals("°ü¸®"))
+			if(e.getActionCommand().equals("ê´€ë¦¬"))
 			{
 				LocalVaccineControl lvc = new LocalVaccineControl();
 			}
