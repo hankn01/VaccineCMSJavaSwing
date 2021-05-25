@@ -11,7 +11,7 @@ public class HaverVaccineCompany extends Company{
 	private int VPTM; //한달 백신 생산량 vaccine prodution time per month
 	ArrayList<String> PVC = new ArrayList<String>(); // 백신 판매 국가
 	//ArrayList<Country> PVC = new ArrayList<Country>(); // 백신 판매 국가
-	//private Vaccine vaccine;
+	private Vaccine vaccineinfo;
 	private String vaccine;
 	
 	public HaverVaccineCompany(String Companyname, String Ceo, 
@@ -33,6 +33,13 @@ public class HaverVaccineCompany extends Company{
 	
 	public String comtype() {
 		return "Hv";
+	}
+	
+	public void setvaccineinfo(Vaccine v) {
+		this.vaccineinfo = v;
+	}
+	public Vaccine getvaccineinfo() {
+		return this.vaccineinfo;
 	}
 
 

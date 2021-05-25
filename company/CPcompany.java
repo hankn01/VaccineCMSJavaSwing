@@ -9,7 +9,7 @@ public class CPcompany extends Company{
 	
 	private String ApprovedCompany;
 	private int VPTM;
-	//private Vaccine vaccine;
+	private Vaccine vaccineinfo;
 	private String vaccine;
 	//ArrayList<Country> PVC = new ArrayList<Country>(); // 백신 판매 국가
 
@@ -29,6 +29,13 @@ public class CPcompany extends Company{
 		this.vaccine = avaccine;
 		this.setApprovedCompany(acompany);
 
+	}
+	
+	public void setvaccineinfo(Vaccine v) {
+		this.vaccineinfo = v;
+	}
+	public Vaccine getvaccineinfo() {
+		return this.vaccineinfo;
 	}
 	
 	public String comtype() {
