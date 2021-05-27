@@ -283,10 +283,10 @@ public class GUICompanyMain extends JFrame implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+			TA.readtext();
 		}
 		
-		TA.readtext();
+		
 		
 	}
 
