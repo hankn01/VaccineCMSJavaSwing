@@ -24,19 +24,17 @@ public class CountryScreen extends JFrame{
 	Country ct = new Country();
 	public CountryScreen()
 	{
-		super("ë°±ì‹ ì–´ë”¨ì–´ PRO - í˜„ì¬ ë°±ì‹  í˜„í™©");
-		this.setTitle("ë°±ì‹ ì–´ë”¨ì–´ PRO - í˜„ì¬ êµ­ê°€ ë°±ì‹  í˜„í™©");
+		
 		JFrame CountryWindow = new JFrame();
 		CountryWindow.setSize(WIDTH, HEIGHT);
 		CountryWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		CountryWindow.setLayout(new BorderLayout());
 		
 		JLabel CountryName = new JLabel();
-		CountryName.setText("ë°±ì‹ ì–´ë”¨ì–´ PRO");
+		CountryName.setText("¹é½Å¾îµøÁö PRO");
 		
 		
 		JLabel CurrentBudget = new JLabel();
-		CurrentBudget.setText("í˜„ì¬ ì˜ˆì‚°(ì½”ë¡œë‚˜ 19 ë°±ì‹  í¸ì„±) :\n"+"í…ŒìŠ¤íŠ¸ ë‹¬ëŸ¬");
 		
 		
 		
@@ -44,20 +42,20 @@ public class CountryScreen extends JFrame{
 		downPanel.setLayout(new BorderLayout());
 		
 		
-		JButton NationStock = new JButton("ì „êµ­ ì¬ê³  í˜„í™©");
+		JButton NationStock = new JButton("±¹°¡ ¹é½Å °ü¸®");
 		
 		
 		
 		
-		JButton LocalStock = new JButton("ì§€ì—­ë³„ ì¬ê³  í˜„í™©");
+		JButton LocalStock = new JButton("Áö¿ª ¹é½Å °ü¸®");
 		
 		
-		JButton setBudget = new JButton("ì˜ˆì‚° ì„¤ì •");
+		JButton setBudget = new JButton("±¹°¡ ¿¹»ê ¼³Á¤");
 		
 		NationStock.addActionListener(new ListenerClass());
-		NationStock.setActionCommand("êµ­ê°€");
+		NationStock.setActionCommand("±¹°¡°ü¸®");
 		LocalStock.addActionListener(new ListenerClass());
-		LocalStock.setActionCommand("ì§€ì—­");
+		LocalStock.setActionCommand("Áö¿ª°ü¸®");
 		
 		CountryWindow.add(CountryName,BorderLayout.NORTH);
 		CountryWindow.add(CurrentBudget,BorderLayout.CENTER);
@@ -104,17 +102,17 @@ public class CountryScreen extends JFrame{
 	class ListenerClass implements ActionListener {
 		public void actionPerformed(ActionEvent e)
 		{
-			if(e.getActionCommand().equals("êµ­ê°€"))
+			if(e.getActionCommand().equals("±¹°¡°ü¸®"))
 			{
 				NationalStockScreen nsc = new NationalStockScreen();
 			}
-			else if(e.getActionCommand().equals("ì§€ì—­"))
+			else if(e.getActionCommand().equals("Áö¿ª°ü¸®"))
 			{
 				LocalStockScreen lsc = new LocalStockScreen();
 			}
 			else
 			{
-				JOptionPane.showMessageDialog(null, "í”„ë¡œê·¸ë¨ ì˜¤ë¥˜ ë°œìƒ(ì½”ë“œ 201)");
+				JOptionPane.showMessageDialog(null, "ÇÁ·Î±×·¥ µ¿ÀÛ ¿À·ù (¿¡·¯ÄÚµå 201)");
 			}
 		}
 		
