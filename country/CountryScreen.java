@@ -1,16 +1,22 @@
 package country;
 import javax.swing.JFrame;
 
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.Action;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 import vaccine.Date;
 import vaccine.Moderna;
@@ -19,8 +25,8 @@ import vaccine.SideEffect.SideEffects;
 import vaccineView.VaccineMainMenu;
 public class CountryScreen extends JFrame{
 
-	public static final int WIDTH = 350;
-	public static final int HEIGHT = 120;
+	public static final int WIDTH = 600;
+	public static final int HEIGHT = 200;
 	Country ct = new Country();
 	public CountryScreen()
 	{
@@ -30,8 +36,20 @@ public class CountryScreen extends JFrame{
 		CountryWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		CountryWindow.setLayout(new BorderLayout());
 		
+		JPanel upPanel = new JPanel();
+		Color upBg = new Color(33,150,243);
+		upPanel.setSize(100,100);
+		upPanel.setBackground(upBg);
+		upPanel.setLayout(new BorderLayout());
+		upPanel.setBounds(0,70,10,10);
 		JLabel CountryName = new JLabel();
-		CountryName.setText("백신어딨지 PRO");
+		CountryName.setText("<html>백신어딨지 PRO<br></html>");
+		
+		CountryName.setFont(new Font("맑은 고딕",Font.PLAIN,15));
+		CountryName.setForeground(new Color(255,255,255));
+		CountryName.setAlignmentX(CENTER_ALIGNMENT);
+		CountryName.setAlignmentY(CENTER_ALIGNMENT);
+		upPanel.add(CountryName,BorderLayout.CENTER);
 		
 		
 		JLabel CurrentBudget = new JLabel();
@@ -41,10 +59,10 @@ public class CountryScreen extends JFrame{
 		JPanel downPanel = new JPanel();
 		downPanel.setLayout(new BorderLayout());
 		
-		
-		JButton NationStock = new JButton("국가 백신 관리");
-		
-		
+		ImageIcon NatImg = new ImageIcon("국가백신현황버튼.JPG");
+		JButton NationStock = new JButton(NatImg);
+		//NationStock.setSize(new Dimension(170,20));
+		NationStock.setPreferredSize(new Dimension(100,46));
 		
 		
 		JButton LocalStock = new JButton("지역 백신 관리");
@@ -60,14 +78,16 @@ public class CountryScreen extends JFrame{
 		LocalStock.setActionCommand("지역관리");
 		setCp.addActionListener(new ListenerClass());
 		setCp.setActionCommand("회사별분량");
-		CountryWindow.add(CountryName,BorderLayout.NORTH);
+
 		CountryWindow.add(CurrentBudget,BorderLayout.CENTER);
 		downPanel.add(NationStock,BorderLayout.WEST);
 		downPanel.add(LocalStock,BorderLayout.CENTER);
 		downPanel.add(setCp,BorderLayout.EAST);
 		
+		CountryWindow.add(upPanel,BorderLayout.NORTH);
+
 		CountryWindow.add(downPanel,BorderLayout.SOUTH);
-		
+
 		CountryWindow.setVisible(true);
 		
 		
