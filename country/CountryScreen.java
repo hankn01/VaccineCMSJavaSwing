@@ -26,7 +26,7 @@ import vaccine.SideEffect.SideEffects;
 import vaccineView.VaccineMainMenu;
 public class CountryScreen extends JFrame{
 
-	public static final int WIDTH = 600;
+	public static final int WIDTH = 460;
 	public static final int HEIGHT = 200;
 	Country ct = new Country();
 	public CountryScreen()
@@ -81,8 +81,14 @@ public class CountryScreen extends JFrame{
 		
 		
 		
-		JButton setCp = new JButton("백신회사별 백신 분량 및 유통기한 관리");
+		ImageIcon Third = new ImageIcon("백신회사별버튼.png");
+		Image Thirda = Third.getImage();
+		Image ChangedThirda = Thirda.getScaledInstance(150, 70, Image.SCALE_SMOOTH);
+		ImageIcon ChangedThird = new ImageIcon(ChangedThirda);
 		
+		
+		JButton setCp = new JButton(ChangedThird);
+		setCp.setPreferredSize(new Dimension(150,70));
 		
 		
 		NationStock.addActionListener(new ListenerClass());
