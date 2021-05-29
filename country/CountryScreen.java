@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.Action;
 import javax.swing.ImageIcon;
@@ -59,13 +60,25 @@ public class CountryScreen extends JFrame{
 		JPanel downPanel = new JPanel();
 		downPanel.setLayout(new BorderLayout());
 		
-		ImageIcon NatImg = new ImageIcon("국가백신현황버튼.JPG");
-		JButton NationStock = new JButton(NatImg);
+		ImageIcon NatImg = new ImageIcon("국가백신현황버튼.png");
+		Image NatImga = NatImg.getImage();
+		Image ChangedNatImga = NatImga.getScaledInstance(150, 70,Image.SCALE_SMOOTH);
+		ImageIcon ChangedNatImg = new ImageIcon(ChangedNatImga);
+		
+		
+		
+		JButton NationStock = new JButton(ChangedNatImg);
 		//NationStock.setSize(new Dimension(170,20));
-		NationStock.setPreferredSize(new Dimension(100,46));
+		NationStock.setPreferredSize(new Dimension(150,70));
 		
 		
-		JButton LocalStock = new JButton("지역 백신 관리");
+		ImageIcon LocImg = new ImageIcon("지역백신관리버튼.png");
+		Image LocImga = LocImg.getImage();
+		Image ChangedLocImga = LocImga.getScaledInstance(150, 70, Image.SCALE_SMOOTH);
+		ImageIcon ChangedLocImg = new ImageIcon(ChangedLocImga);
+		JButton LocalStock = new JButton(ChangedLocImg);
+		LocalStock.setPreferredSize(new Dimension(150,70));
+		
 		
 		
 		JButton setCp = new JButton("백신회사별 백신 분량 및 유통기한 관리");
