@@ -30,6 +30,7 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 	VaccineSTCClass temp = null;
 	JComboBox selectCompany = null;
 	JTextField Amount = null;
+	JTextField DInput = null;
 	HashMap<String, VaccineSTCClass> STCdata = null;
 	public NationalVaccineControl()
 	{
@@ -107,8 +108,22 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 		
 		downPanel.add(selectCompany,BorderLayout.NORTH);
 		
+		
+		JPanel form = new JPanel();
+		form.setLayout(new BorderLayout());
+		
 		Amount = new JTextField();
-		downPanel.add(Amount,BorderLayout.CENTER);
+		form.add(Amount,BorderLayout.NORTH);
+		
+		JLabel DInputLabel = new JLabel();
+		DInputLabel.setText("백신 도입 날짜:");
+		form.add(DInputLabel,BorderLayout.CENTER);
+		
+		DInput = new JTextField();
+		form.add(DInput,BorderLayout.SOUTH);
+		
+		downPanel.add(form,BorderLayout.CENTER);
+		
 		
 		JPanel ButtonPanel = new JPanel();
 		ButtonPanel.setLayout(new BorderLayout());
