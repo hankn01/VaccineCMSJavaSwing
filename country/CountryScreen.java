@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-
+import java.awt.Toolkit;
 import com.sun.tools.javac.Main;
 
 import vaccine.Date;
@@ -35,10 +35,17 @@ public class CountryScreen extends JFrame{
 	public CountryScreen()
 	{
 		
-		JFrame CountryWindow = new JFrame();
+		JFrame CountryWindow = new JFrame("¹é½Å¾îµø¾î PRO");
 		CountryWindow.setSize(WIDTH, HEIGHT);
 		CountryWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		CountryWindow.setLayout(new BorderLayout());
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image prgImg = toolkit.getImage("programIcon.png");
+		CountryWindow.setIconImage(prgImg);
+		CountryWindow.setResizable(false);
+		
+		
 		ImageIcon icon = new ImageIcon("vaccineImage.png");
 		JPanel upPanel = new JPanel()
 		{
