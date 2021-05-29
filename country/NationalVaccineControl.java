@@ -26,7 +26,7 @@ import java.util.Scanner;
 
 public class NationalVaccineControl extends JFrame implements ActionListener{
 	public static final int WIDTH = 400;
-	public static final int HEIGHT = 150;
+	public static final int HEIGHT = 250;
 	VaccineSTCClass temp = null;
 	JComboBox selectCompany = null;
 	JTextField Amount = null;
@@ -70,7 +70,7 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 		}
 		
 		JLabel Inst = new JLabel();
-		Inst.setText("백신을 도입하거나, 유효기간이 만료된 백신 또는 불량 백신을 폐기합니다.");
+		Inst.setText("<html>백신을 도입하거나, 유효기간이 만료된 백신 또는 불량 백신을 폐기합니다.<br>백신 생산 회사 및 도입 수량을 입력해 주세요.</html>");
 		
 		JPanel downPanel = new JPanel();
 		downPanel.setLayout(new BorderLayout());
