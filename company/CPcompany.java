@@ -52,21 +52,21 @@ public class CPcompany extends Company  implements VaccineAddable{
 		switch(avaccine) {
 		case "Moderna": 
 
-			Moderna vm = new Moderna(25000, 720/this.VPTM , -20, 2, 0.5, sideEffects, new ArrayList<VaccineProduct>(), "MRNA-1273");
+			Moderna vm = new Moderna(25000, 720/this.VPTM , -20, 86400, 0.11, sideEffects, new ArrayList<VaccineProduct>(), "MRNA-1273");
 			this.vaccineinfo = vm;
 			
 			break;
 		case "Pfizer": 
-			Pfizer pm = new Pfizer(20000, 720/this.VPTM, -70, 2, 0.5, sideEffects, new ArrayList<VaccineProduct>(), "BNT162b2");
+			Pfizer pm = new Pfizer(20000, 720/this.VPTM, -70, 86400, 0.16, sideEffects, new ArrayList<VaccineProduct>(), "BNT162b2");
 			this.vaccineinfo = pm;
 		
 			break;
 		case "AZ": 
-			AZ  am= new AZ(3000, 720/this.VPTM, 5, 2, 0.5, sideEffects, new ArrayList<VaccineProduct>(), "Ad5");
+			AZ  am= new AZ(3000, 720/this.VPTM, 5, 86400, 0.555, sideEffects, new ArrayList<VaccineProduct>(), "Ad5");
 			this.vaccineinfo = am;
 			break;
 		case "Yansen": 
-			Yansen ym = new Yansen(12000, 720/this.VPTM, -20, 2, 0.5, sideEffects, new ArrayList<VaccineProduct>(), "Ad26)");
+			Yansen ym = new Yansen(12000, 720/this.VPTM, -20, 86400, 0.1, sideEffects, new ArrayList<VaccineProduct>(), "Ad26)");
 			this.vaccineinfo = ym;
 			break;
 		case "Chadox1": 

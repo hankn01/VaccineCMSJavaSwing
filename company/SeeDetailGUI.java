@@ -30,6 +30,7 @@ public class SeeDetailGUI extends JFrame{
 	
 	TextAdaptor TA = new TextAdaptor();
 	ArrayList<VaccineProduct> inventory = new ArrayList<VaccineProduct>(0);
+	Company dc = null;
 
 	
 	public SeeDetailGUI(Object seltype, Object selname) {
@@ -74,10 +75,10 @@ public class SeeDetailGUI extends JFrame{
 		
 
 		if(Comtype.equals("백신개발생산기업")) {
-			HaverVaccineCompany dc = new HaverVaccineCompany();
+			dc = new HaverVaccineCompany();
 				for(Company c: TA.company) {
 					if(c.getCompanyName().equals(selname)) {
-						dc = (HaverVaccineCompany) c;
+						dc = c;
 					}
 				}
 				JPanel datapanel =new JPanel();
@@ -88,14 +89,14 @@ public class SeeDetailGUI extends JFrame{
 				datapanel.add(l1);
 				datapanel.add(d1);
 				JLabel l2 = new JLabel("백신");
-				JButton d2 = new JButton(dc.getVaccine());
+				JButton d2 = new JButton(((HaverVaccineCompany) dc).getVaccine());
 				
 				d2.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent e) {
 						
 						
-						//VaccineMainMenu vmm = new VaccineMainMenu(dc.getvaccineinfo(), dc);
+						VaccineMainMenu vmm = new VaccineMainMenu(((HaverVaccineCompany) dc).getvaccineinfo(), dc);
 						
 					}
 						
@@ -105,11 +106,11 @@ public class SeeDetailGUI extends JFrame{
 				datapanel.add(l2);
 				datapanel.add(d2);
 				JLabel l3 = new JLabel("판매 국가");
-				JLabel d3 = new JLabel(dc.getCountry());
+				JLabel d3 = new JLabel(((HaverVaccineCompany) dc).getCountry());
 				datapanel.add(l3);
 				datapanel.add(d3);
 				JLabel l4 = new JLabel("한달 백신 생산량");
-				JLabel d4 = new JLabel(Integer.toString(dc.getVTPM()));
+				JLabel d4 = new JLabel(Integer.toString(((HaverVaccineCompany) dc).getVTPM()));
 				datapanel.add(l4);
 				datapanel.add(d4);
 				JLabel l5 = new JLabel("CEO");
@@ -133,7 +134,7 @@ public class SeeDetailGUI extends JFrame{
 			 
 
 		}else if(Comtype.equals("위탁생산기업")) {
-			CPcompany dc = new CPcompany();
+			dc = new CPcompany();
 				for(Company c: TA.company) {
 					if(c.getCompanyName().equals(selname)) {
 						dc = (CPcompany) c;
@@ -146,16 +147,18 @@ public class SeeDetailGUI extends JFrame{
 					datapanel.add(l1);
 					datapanel.add(d1);
 					JLabel l2 = new JLabel("백신");
-					JButton d2 = new JButton(dc.getVaccine());
+					JButton d2 = new JButton(((CPcompany) dc).getVaccine());
 					
-					int vpt = 720/dc.getVTPM();
+					
 					
 					
 					d2.addActionListener(new ActionListener() {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							String vaccineTypeFromInput = e.getActionCommand();	
+							
+							
+							VaccineMainMenu vmm = new VaccineMainMenu(((CPcompany) dc).getvaccineinfo(), dc);
 							
 							
 							
@@ -170,7 +173,7 @@ public class SeeDetailGUI extends JFrame{
 					datapanel.add(d2);
 
 					JLabel l4 = new JLabel("한달 백신 생산량");
-					JLabel d4 = new JLabel(Integer.toString(dc.getVTPM()));
+					JLabel d4 = new JLabel(Integer.toString(((CPcompany) dc).getVTPM()));
 					datapanel.add(l4);
 					datapanel.add(d4);
 					JLabel l5 = new JLabel("CEO");
@@ -190,7 +193,7 @@ public class SeeDetailGUI extends JFrame{
 					datapanel.add(l8);
 					datapanel.add(d8);
 					JLabel l9 = new JLabel("위탁요청기업");
-					JLabel d9 = new JLabel(dc.getApprovedCompany());
+					JLabel d9 = new JLabel(((CPcompany) dc).getApprovedCompany());
 					datapanel.add(l9);
 					datapanel.add(d9);
 					
@@ -201,7 +204,7 @@ public class SeeDetailGUI extends JFrame{
 					
 				}
 		}else {
-			UnderDevelopCompany dc = new UnderDevelopCompany();
+			dc = new UnderDevelopCompany();
 				for(Company c: TA.company) {
 					if(c.getCompanyName().equals(selname)) {
 						dc = (UnderDevelopCompany) c;
@@ -215,11 +218,11 @@ public class SeeDetailGUI extends JFrame{
 				datapanel.add(l1);
 				datapanel.add(d1);
 				JLabel l2 = new JLabel("개발 중인 백신 이름");
-				JLabel d2 = new JLabel(dc.getDevelopVaccineName());
+				JLabel d2 = new JLabel(((UnderDevelopCompany) dc).getDevelopVaccineName());
 				datapanel.add(l2);
 				datapanel.add(d2);				
 				JLabel l3 = new JLabel("임상 단계");
-				JLabel d3 = new JLabel("임상 "+dc.getClinicalProgress()+"단계");
+				JLabel d3 = new JLabel("임상 "+((UnderDevelopCompany) dc).getClinicalProgress()+"단계");
 				datapanel.add(l3);
 				datapanel.add(d3);
 				JLabel l5 = new JLabel("CEO");

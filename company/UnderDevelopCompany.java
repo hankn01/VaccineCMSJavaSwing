@@ -4,6 +4,7 @@ import java.awt.geom.FlatteningPathIterator;
 
 import country.Country;
 import vaccine.Vaccine;
+import vaccine.VaccineProduct;
 
 public class UnderDevelopCompany extends Company{
 	
@@ -49,6 +50,12 @@ public class UnderDevelopCompany extends Company{
 	
 	public int getClinicalProgress() {
 		return this.ClinicalProgress;
+	}
+
+	@Override
+	public void addToFile(VaccineProduct vaccineProduct) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

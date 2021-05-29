@@ -2,7 +2,7 @@ package company;
 
 import vaccine.VaccineAddable;
 
-public  abstract class Company {
+public  abstract class Company implements VaccineAddable {
 	private String CompanyName;
 	private String CEO;
 	private Date DateOfEstablishment;
