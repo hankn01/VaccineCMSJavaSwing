@@ -1,18 +1,26 @@
 package vaccineView;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import vaccine.*;
 
-public class InventoryContents extends JPanel {
+public class InventoryContents extends JPanel
+implements ActionListener {
 	public static final String[] HEADER = {"Number", "Capacity", "Produce Date", "Expire Date"};
 	
 	private Vaccine vaccine;
+	private VaccineAddable vaccineAddable = null;
 	private String[][] body;
 	
-	public InventoryContents(Vaccine vaccine) {
+	private JButton addBtn = new JButton("Add Vaccine Product");
+	
+	public InventoryContents(Vaccine vaccine, VaccineAddable vaccineAddable) {
 		super();
 		this.vaccine = vaccine;
+		this.vaccineAddable = vaccineAddable;
 		this.body = new String[vaccine.getInventory().size()][HEADER.length];
 		setLayout(new BorderLayout());
 		
@@ -26,8 +34,17 @@ public class InventoryContents extends JPanel {
 		JScrollPane scroll = new JScrollPane(new JTable(body, HEADER));
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
-		add(scroll);
+		add(scroll, BorderLayout.CENTER);
+		
+		addBtn.addActionListener(this);
+		
+		add(addBtn, BorderLayout.SOUTH);
 		
 		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		VaccineAdd va = new VaccineAdd(vaccineAddable);
 	}
 }

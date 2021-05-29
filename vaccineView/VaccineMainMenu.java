@@ -26,7 +26,7 @@ implements ActionListener {
 	private EffectivenessContents efc;
 	private InventoryContents invc;
 	
-	public VaccineMainMenu(Vaccine vaccine) {
+	public VaccineMainMenu(Vaccine vaccine, VaccineAddable vaccineAddable) {
 		super();
 		
 		this.vaccine = vaccine;
@@ -37,7 +37,7 @@ implements ActionListener {
 		mc = new MainContents(vaccine, this);
 		infc = new InformationContents(vaccine);
 		efc = new EffectivenessContents(vaccine);
-		invc = new InventoryContents(vaccine);
+		invc = new InventoryContents(vaccine, vaccineAddable);
 		
 		setContents(ContentsType.Main, vaccine);
 		
@@ -71,26 +71,4 @@ implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		setContents(ContentsType.Main, vaccine);
 	}
-	
-//	public static void main(String[] args) {
-//		double cost = 100;
-//		String RNAName = "MRNA-1273";
-//		double protectionRate = 90;
-//		double coldChainDegree = -70;
-//		int inoculationTime = 2;
-//		SideEffects[] sideEffects = {SideEffects.Pain, SideEffects.Blush, SideEffects.Swelling, SideEffects.Fatigue, SideEffects.Headache};
-//		
-//		double sideEffectRisk = 0.5;
-//		
-//		ArrayList<VaccineProduct> inventory = new ArrayList<VaccineProduct>(0);
-//		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,13), new Date(2021,5,20)));
-//		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,14), new Date(2021,5,21)));
-//		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,15), new Date(2021,5,22)));
-//		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,16), new Date(2021,5,23)));
-//		inventory.add(new VaccineProduct(20, 6.5, new Date(2021,5,17), new Date(2021,5,24)));
-//		
-//		VaccineMainMenu vmm = new VaccineMainMenu(new Moderna(
-//				cost, protectionRate, coldChainDegree, inoculationTime, sideEffectRisk, sideEffects, inventory, RNAName
-//		));
-//	}
 }
