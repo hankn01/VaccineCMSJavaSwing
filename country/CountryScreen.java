@@ -146,7 +146,7 @@ public class CountryScreen extends JFrame{
 	class ListenerClass implements ActionListener {
 		public void actionPerformed(ActionEvent e)
 		{
-			if(e.getActionCommand().equals("국가관리"))
+			if(e.getActionCommand().equals("회사별분량"))
 			{
 				NationalStockScreen nsc = new NationalStockScreen();
 			}
@@ -154,7 +154,7 @@ public class CountryScreen extends JFrame{
 			{
 				LocalStockScreen lsc = new LocalStockScreen();
 			}
-			else if(e.getActionCommand().equals("회사별분량"))
+			else if(e.getActionCommand().equals("국가관리"))
 			{
 				//stub code
 				
