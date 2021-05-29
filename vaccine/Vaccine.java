@@ -19,10 +19,6 @@ implements Inoculationable, Runnable {
 	// 3. inventory
 	private ArrayList<VaccineProduct> inventory;
 	
-	public void addInventory(VaccineProduct vaccineProduct) {
-		inventory.add(vaccineProduct);
-	}
-	
 	public Vaccine(VaccineType.VaccineTypes vaccineType, double cost, double protectionRate, double coldChainDegree, int inoculationTime, 
 			double sideEffectRisk, SideEffects[] sideEffects, 
 			ArrayList<VaccineProduct> inventory) {

@@ -19,6 +19,8 @@ implements ActionListener {
 			"vaccineNum", "capacity", "produceDate YYYY-MM-DD", "expireDate YYYY-MM-DD"
 	};
 	
+	Vaccine vaccine = null;
+	
 	private JTextField[] inputs = {
 			new JTextField(TEXT_SIZE),
 			new JTextField(TEXT_SIZE),
@@ -29,9 +31,10 @@ implements ActionListener {
 	private VaccineAddable vaccineAddable = null;
 	private JButton submit = new JButton("Submit");
 	
-	public VaccineAdd(VaccineAddable vaccineAddable) {
+	public VaccineAdd(Vaccine vaccine, VaccineAddable vaccineAddable) {
 		super();
 		
+		this.vaccine = vaccine;
 		this.vaccineAddable = vaccineAddable;
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -68,10 +71,14 @@ implements ActionListener {
 		StringTokenizer stPD = new StringTokenizer(inputs[2].getText().toString(), "-");
 		StringTokenizer stED = new StringTokenizer(inputs[3].getText().toString(), "-");
 		
-		vaccineAddable.addToFile(new VaccineProduct(
+		VaccineProduct vaccineProduct = new VaccineProduct(
 			Integer.parseInt(inputs[0].getText().toString()), Double.parseDouble(inputs[1].getText().toString()),
 			new Date(Integer.parseInt(stPD.nextToken()), Integer.parseInt(stPD.nextToken()), Integer.parseInt(stPD.nextToken())),
 			new Date(Integer.parseInt(stED.nextToken()), Integer.parseInt(stED.nextToken()), Integer.parseInt(stED.nextToken()))
-		));
+		);
+		
+		vaccine.addVaccineProduct(vaccineProduct);
+		
+		vaccineAddable.addToFile(vaccineProduct);
 	}
 }
