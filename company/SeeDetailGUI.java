@@ -20,12 +20,13 @@ import vaccine.ChadOx1;
 import vaccine.Moderna;
 import vaccine.Pfizer;
 import vaccine.Vaccine;
+import vaccine.VaccineAddable;
 import vaccine.VaccineProduct;
 import vaccine.SideEffect;
 import vaccineView.VaccineMainMenu;
 
 
-public class SeeDetailGUI extends JFrame {
+public class SeeDetailGUI extends JFrame{
 	
 	TextAdaptor TA = new TextAdaptor();
 	ArrayList<VaccineProduct> inventory = new ArrayList<VaccineProduct>(0);
@@ -62,12 +63,14 @@ public class SeeDetailGUI extends JFrame {
 		close.setPreferredSize(new Dimension(30,30));
 		
 		
+		
+		
 		TA.readtext();
 		String Comname = (String) selname;
 		String Comtype =(String) seltype;
 		//System.out.println(Comname);
 	
-		System.out.println(selname);
+		//System.out.println(selname);
 		
 
 		if(Comtype.equals("백신개발생산기업")) {
@@ -86,43 +89,14 @@ public class SeeDetailGUI extends JFrame {
 				datapanel.add(d1);
 				JLabel l2 = new JLabel("백신");
 				JButton d2 = new JButton(dc.getVaccine());
-				int vpt = 720/dc.getVTPM();
+				
 				d2.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent e) {
 						
-						String vaccineTypeFromInput = e.getActionCommand();	
 						
-						vaccine.SideEffect.SideEffects[] sideEffects = {vaccine.SideEffect.SideEffects.Pain, vaccine.SideEffect.SideEffects.Blush, vaccine.SideEffect.SideEffects.Swelling, 
-								vaccine.SideEffect.SideEffects.Fatigue, vaccine.SideEffect.SideEffects.Headache};
-						switch(vaccineTypeFromInput) {
-						case "Morderna": 
-
-							Moderna vm = new Moderna(25000, vpt , -20, 2, 0.5, sideEffects, inventory, "MRNA-1273");
-							inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-							VaccineMainMenu vmm = new VaccineMainMenu(vm);
-							break;
-						case "Pfizer": 
-							Pfizer pm = new Pfizer(20000, vpt, -70, 2, 0.5, sideEffects, inventory, "BNT162b2");
-							inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-							VaccineMainMenu pmm = new VaccineMainMenu(pm);
-							break;
-						case "AZ": 
-							AZ  am= new AZ(3000, vpt, 5, 2, 0.5, sideEffects, inventory, "Ad5");
-							inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-							VaccineMainMenu amm = new VaccineMainMenu(am);
-							break;
-						case "Yansen": 
-							Yansen ym = new Yansen(12000, vpt, -20, 2, 0.5, sideEffects, inventory, "Ad26)");
-							inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-							VaccineMainMenu ymm = new VaccineMainMenu(ym);
-							break;
-						case "Chadox1": 
-							ChadOx1 cm = new ChadOx1(0, 0, 0, 0, 0, null, null, null, true, null);
-							inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-							VaccineMainMenu cmm = new VaccineMainMenu(cm);
+						//VaccineMainMenu vmm = new VaccineMainMenu(dc.getvaccineinfo(), dc);
 						
-					}
 					}
 						
 					
@@ -183,36 +157,8 @@ public class SeeDetailGUI extends JFrame {
 						public void actionPerformed(ActionEvent e) {
 							String vaccineTypeFromInput = e.getActionCommand();	
 							
-							vaccine.SideEffect.SideEffects[] sideEffects = {vaccine.SideEffect.SideEffects.Pain, vaccine.SideEffect.SideEffects.Blush, vaccine.SideEffect.SideEffects.Swelling, 
-									vaccine.SideEffect.SideEffects.Fatigue, vaccine.SideEffect.SideEffects.Headache};
-							switch(vaccineTypeFromInput) {
-									case "Morderna": 
-
-										Moderna vm = new Moderna(25000, vpt , -20, 2, 0.5, sideEffects, inventory, "MRNA-1273");
-										inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-										VaccineMainMenu vmm = new VaccineMainMenu(vm);
-										break;
-									case "Pfizer": ;
-										Pfizer pm = new Pfizer(20000, vpt, -70, 2, 0.5, sideEffects, inventory, "BNT162b2");
-										inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-										VaccineMainMenu pmm = new VaccineMainMenu(pm);
-										break;
-									case "AZ": 
-										AZ  am= new AZ(3000, vpt, 5, 2, 0.5, sideEffects, inventory, "Ad5");
-										inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-										VaccineMainMenu amm = new VaccineMainMenu(am);
-										break;
-									case "Yansen": 
-										Yansen ym = new Yansen(12000, vpt, -20, 2, 0.5, sideEffects, inventory, "Ad26)");
-										inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-										VaccineMainMenu ymm = new VaccineMainMenu(ym);
-										break;
-									case "Chadox1": 
-										ChadOx1 cm = new ChadOx1(0, 0, 0, 0, 0, null, null, null, true, null);
-										inventory.add(new VaccineProduct(20, 6.5, new vaccine.Date(2021,5,13), new vaccine.Date(2021,5,13)));
-										VaccineMainMenu cmm = new VaccineMainMenu(cm);
-									
-								}
+							
+							
 								
 						}
 						
@@ -306,5 +252,6 @@ public class SeeDetailGUI extends JFrame {
 		
 		
 	}
+
 
 }

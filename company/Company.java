@@ -1,11 +1,15 @@
 package company;
 
+import vaccine.VaccineAddable;
+
 public  abstract class Company {
 	private String CompanyName;
 	private String CEO;
 	private Date DateOfEstablishment;
 	private String HeadquatersLocation;
 	private int NumberOfEmployee;
+	
+	
 	
 	public Company() {
 		this.CompanyName = "";

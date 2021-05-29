@@ -127,6 +127,17 @@ public class GUIaddHavevaccineComInfo extends JFrame {
 				try {
 					String filePath = "회사데이터.txt";
 					File file = new File(filePath);
+					
+					
+					String fileName = t1.getText();
+					File fileC = new File(fileName);
+					if(!fileC.exists()) {
+						fileC.createNewFile();
+					}else {
+						JOptionPane.showMessageDialog(null, "회사가 이미 존재합니다.");
+					}
+
+					
 					if(!file.exists()) {
 						file.createNewFile();
 					}
