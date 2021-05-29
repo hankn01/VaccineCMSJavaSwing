@@ -60,7 +60,7 @@ public class CountryScreen extends JFrame{
 		JPanel downPanel = new JPanel();
 		downPanel.setLayout(new BorderLayout());
 		
-		ImageIcon NatImg = new ImageIcon("국가백신현황버튼.png");
+		ImageIcon NatImg = new ImageIcon("국가백신현황버튼.JPG");
 		Image NatImga = NatImg.getImage();
 		Image ChangedNatImga = NatImga.getScaledInstance(150, 70,Image.SCALE_SMOOTH);
 		ImageIcon ChangedNatImg = new ImageIcon(ChangedNatImga);
