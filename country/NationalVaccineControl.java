@@ -26,10 +26,11 @@ import java.util.Scanner;
 
 public class NationalVaccineControl extends JFrame implements ActionListener{
 	public static final int WIDTH = 400;
-	public static final int HEIGHT = 150;
+	public static final int HEIGHT = 250;
 	VaccineSTCClass temp = null;
 	JComboBox selectCompany = null;
 	JTextField Amount = null;
+	JTextField DInput = null;
 	HashMap<String, VaccineSTCClass> STCdata = null;
 	public NationalVaccineControl()
 	{
@@ -69,7 +70,7 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 		}
 		
 		JLabel Inst = new JLabel();
-		Inst.setText("백신을 도입하거나, 유효기간이 만료된 백신 또는 불량 백신을 폐기합니다.");
+		Inst.setText("<html>백신을 도입하거나, 유효기간이 만료된 백신 또는 불량 백신을 폐기합니다.<br>백신 생산 회사 및 도입 수량을 입력해 주세요.</html>");
 		
 		JPanel downPanel = new JPanel();
 		downPanel.setLayout(new BorderLayout());
@@ -107,8 +108,22 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 		
 		downPanel.add(selectCompany,BorderLayout.NORTH);
 		
+		
+		JPanel form = new JPanel();
+		form.setLayout(new BorderLayout());
+		
 		Amount = new JTextField();
-		downPanel.add(Amount,BorderLayout.CENTER);
+		form.add(Amount,BorderLayout.NORTH);
+		
+		JLabel DInputLabel = new JLabel();
+		DInputLabel.setText("백신 도입 날짜:");
+		form.add(DInputLabel,BorderLayout.CENTER);
+		
+		DInput = new JTextField();
+		form.add(DInput,BorderLayout.SOUTH);
+		
+		downPanel.add(form,BorderLayout.CENTER);
+		
 		
 		JPanel ButtonPanel = new JPanel();
 		ButtonPanel.setLayout(new BorderLayout());
