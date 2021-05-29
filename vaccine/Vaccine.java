@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import vaccine.SideEffect.SideEffects;
 
 public abstract class Vaccine
-implements Inoculationable, Productable {
+implements Inoculationable, Productable, Runnable {
 	// 1. information
 	private VaccineType.VaccineTypes vaccineType;
 	private double cost;
@@ -14,6 +14,7 @@ implements Inoculationable, Productable {
 	private int inoculationTime;
 	private double sideEffectRisk;
 	private SideEffect.SideEffects[] sideEffects;
+	private VaccineProduct vaccineProduct;
 	
 	// 3. inventory
 	private ArrayList<VaccineProduct> inventory;
@@ -100,6 +101,12 @@ implements Inoculationable, Productable {
 		this.inventory = inventory;
 	}
 	
+	public void addVaccineProduct(VaccineProduct vaccineProduct) {
+		this.vaccineProduct = vaccineProduct;
+		Thread t = new Thread(this);
+		t.start();
+	}
+	
 	@Override
 	public double calcRisk(Ages age, HumanRaces humanRace) {
 		return getSideEffectRisk() 
@@ -109,5 +116,10 @@ implements Inoculationable, Productable {
 	@Override
 	public boolean canInoculation(Ages age, HumanRaces humanRace) {
 		return calcRisk(age, humanRace) < calcProfit(age, humanRace);
+	}
+	
+	@Override
+	public void run() {
+		this.inventory.add(vaccineProduct);
 	}
 }
