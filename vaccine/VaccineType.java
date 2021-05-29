@@ -15,7 +15,7 @@ public interface VaccineType {
 			-20, -70, 5, -20, 0
 	};
 	
-	int inoculationTime =2;
+	int inoculationTime = 86400; //하루를 초로 변환, 발열 따위 증상이 나타나기까지 시간
 	
 	double[] sideEffectRisk = {
 			0.11,0.16,0.55, 0.1, 0 
