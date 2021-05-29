@@ -1,5 +1,5 @@
 package vaccine;
 
 public interface VaccineAddable {
-	public abstract VaccineProduct addToFile(VaccineProduct vaccineProduct);
+	public abstract void addToFile(VaccineProduct vaccineProduct);
 }
