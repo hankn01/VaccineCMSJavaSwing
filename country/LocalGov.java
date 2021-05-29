@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class LocalGov {
 	private String LocalName;
-	private ArrayList<VaccineLocation> VCL; //다른 조원의 결과와 연동
+	private ArrayList<VaccineLocation> VCL; 
 	private int VaccinationAmount;
 	private int Population;
 	private int Amount;
@@ -26,8 +26,7 @@ public class LocalGov {
 		
 		
 	}
-	//클래스 협의 결과에 따라 생성자는 수정될 수 있음.
-	
+		
 	public void addLocation(String LocName, String Addr)
 	{
 		VaccineLocation temp = new VaccineLocation(LocName, Addr);
