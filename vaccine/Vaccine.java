@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import vaccine.SideEffect.SideEffects;
 
 public abstract class Vaccine
-implements Inoculationable, Productable, Runnable {
+implements Inoculationable, Runnable {
 	// 1. information
 	private VaccineType.VaccineTypes vaccineType;
 	private double cost;
