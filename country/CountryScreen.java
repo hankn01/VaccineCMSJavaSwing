@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.Action;
@@ -19,6 +20,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import com.sun.tools.javac.Main;
+
 import vaccine.Date;
 import vaccine.Moderna;
 import vaccine.VaccineProduct;
@@ -27,7 +30,7 @@ import vaccineView.VaccineMainMenu;
 public class CountryScreen extends JFrame{
 
 	public static final int WIDTH = 460;
-	public static final int HEIGHT = 200;
+	public static final int HEIGHT = 180;
 	Country ct = new Country();
 	public CountryScreen()
 	{
@@ -36,22 +39,35 @@ public class CountryScreen extends JFrame{
 		CountryWindow.setSize(WIDTH, HEIGHT);
 		CountryWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		CountryWindow.setLayout(new BorderLayout());
+		ImageIcon icon = new ImageIcon("vaccineImage.png");
+		JPanel upPanel = new JPanel()
+		{
+			public void paintComponent(Graphics g)
+			{
+				g.drawImage(icon.getImage(),0,0,null);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
+		//Color upBg = new Color(33,150,243);
+		//upPanel.setSize(460,80);
+		//upPanel.setBackground(upBg);
+		//upPanel.setLayout(new BorderLayout());
+		//upPanel.setBounds(0,70,10,10);
+		//JLabel CountryName = new JLabel();
+		//CountryName.setText("<html>¹é½Å¾îµøÁö PRO<br></html>");
 		
-		JPanel upPanel = new JPanel();
-		Color upBg = new Color(33,150,243);
-		upPanel.setSize(100,100);
-		upPanel.setBackground(upBg);
-		upPanel.setLayout(new BorderLayout());
-		upPanel.setBounds(0,70,10,10);
-		JLabel CountryName = new JLabel();
-		CountryName.setText("<html>¹é½Å¾îµøÁö PRO<br></html>");
+		//CountryName.setFont(new Font("¸¼Àº °íµñ",Font.PLAIN,15));
+		//CountryName.setForeground(new Color(255,255,255));
+		//CountryName.setAlignmentX(CENTER_ALIGNMENT);
+		//CountryName.setAlignmentY(CENTER_ALIGNMENT);
+		//upPanel.add(CountryName,BorderLayout.CENTER);
 		
-		CountryName.setFont(new Font("¸¼Àº °íµñ",Font.PLAIN,15));
-		CountryName.setForeground(new Color(255,255,255));
-		CountryName.setAlignmentX(CENTER_ALIGNMENT);
-		CountryName.setAlignmentY(CENTER_ALIGNMENT);
-		upPanel.add(CountryName,BorderLayout.CENTER);
 		
+		
+		
+		
+		//upPanel.add(ChangedVaccineImgIcon)
 		
 		JLabel CurrentBudget = new JLabel();
 		
@@ -98,12 +114,12 @@ public class CountryScreen extends JFrame{
 		setCp.addActionListener(new ListenerClass());
 		setCp.setActionCommand("È¸»çº°ºÐ·®");
 
-		CountryWindow.add(CurrentBudget,BorderLayout.CENTER);
+		//CountryWindow.add(CurrentBudget,BorderLayout.CENTER);
 		downPanel.add(NationStock,BorderLayout.WEST);
 		downPanel.add(LocalStock,BorderLayout.CENTER);
 		downPanel.add(setCp,BorderLayout.EAST);
 		
-		CountryWindow.add(upPanel,BorderLayout.NORTH);
+		CountryWindow.add(upPanel,BorderLayout.CENTER);
 
 		CountryWindow.add(downPanel,BorderLayout.SOUTH);
 
