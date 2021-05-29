@@ -12,7 +12,7 @@ public class LocalVaccineControl extends JFrame{
 	
 	public LocalVaccineControl()
 	{
-		super("ì§€ì—­ë³„ ì¬ê³  í• ë‹¹");
+		super("");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(WIDTH,HEIGHT);
 		this.setLayout(new BorderLayout());
@@ -23,7 +23,7 @@ public class LocalVaccineControl extends JFrame{
 		JComboBox selectCompany = new JComboBox();
 		
 		
-		selectCompany.addItem("-----ë°±ì‹  íšŒì‚¬ ì„ íƒ------");
+		selectCompany.addItem("-----¹é½Å È¸»ç ¼±ÅÃ------");
 		
 		
 		upPanel.add(selectCompany,BorderLayout.NORTH);
@@ -33,17 +33,17 @@ public class LocalVaccineControl extends JFrame{
 		
 		JComboBox selectLoc = new JComboBox();
 		
-		selectLoc.addItem("-----ì§€ì—­ ì„ íƒ-----");
+		selectLoc.addItem("-----Áö¿ª ¼±ÅÃ-----");
 		
 		upPanel.add(selectLoc,BorderLayout.SOUTH);
 		
 		
 		this.add(upPanel,BorderLayout.NORTH);
 		JTextArea LocArc = new JTextArea();
-		LocArc.setText("ì§€ì—­ ë° ìˆ˜ëŸ‰ ì…ë ¥");
+		LocArc.setText("¼ö·® ÀÔ·Â");
 		this.add(LocArc,BorderLayout.CENTER);
 		
-		JButton Allowcate = new JButton("í• ë‹¹");
+		JButton Allowcate = new JButton("ÇÒ´ç");
 		
 		this.add(Allowcate,BorderLayout.SOUTH);
 		
