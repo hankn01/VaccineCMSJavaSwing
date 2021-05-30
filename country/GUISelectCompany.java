@@ -58,7 +58,7 @@ public class GUISelectCompany extends JFrame implements ActionListener, VaccineT
 	{
 		super("회사 선택");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		this.setSize(500,500);
+		this.setSize(500,100);
 		this.setLayout(new FlowLayout());
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();

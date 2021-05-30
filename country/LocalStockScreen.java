@@ -146,7 +146,19 @@ public class LocalStockScreen extends JFrame{
 			{
 				System.out.println(SelectLocation.getSelectedItem().toString());
 				System.out.println(data.get(SelectLocation.getSelectedItem().toString()).getAZStock());
-				res.setText("아스트라제네카(AZ):"+data.get(SelectLocation.getSelectedItem().toString()).getAZStock()+", 모더나:"+data.get(SelectLocation.getSelectedItem().toString()).getModernaStock()+", 화이자: "+data.get(SelectLocation.getSelectedItem().toString()).getPfizerStock()+", 얀센: "+data.get(SelectLocation.getSelectedItem().toString()).getYansenStock()+"ChadOx1"+data.get(SelectLocation.getSelectedItem().toString()).getChadOx1Stock());
+				
+				if(data.containsKey(SelectLocation.getSelectedItem().toString()))
+				{
+					res.setText("아스트라제네카(AZ):"+data.get(SelectLocation.getSelectedItem().toString()).getAZStock()+", 모더나:"+data.get(SelectLocation.getSelectedItem().toString()).getModernaStock()+", 화이자: "+data.get(SelectLocation.getSelectedItem().toString()).getPfizerStock()+", 얀센: "+data.get(SelectLocation.getSelectedItem().toString()).getYansenStock()+"ChadOx1"+data.get(SelectLocation.getSelectedItem().toString()).getChadOx1Stock());
+						
+					
+					
+				
+				}
+				else if(data.get(SelectLocation.getSelectedItem().toString()) == null)
+					JOptionPane.showMessageDialog(null, "항목이 존재하지 않습니다.");
+				else
+					JOptionPane.showMessageDialog(null, "항목이 존재하지 않습니다.");
 				
 			}
 			else if(e.getActionCommand().equals("저장"))
