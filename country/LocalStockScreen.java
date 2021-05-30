@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Event;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,6 +29,16 @@ public class LocalStockScreen extends JFrame{
 		this.setSize(400,300);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image prgImg = toolkit.getImage("programIcon.png");
+		this.setIconImage(prgImg);
+		this.setResizable(false);
+		
+		
+		
+		
+		
 		
 		JComboBox SelectLocation = new JComboBox();
 		SelectLocation.setToolTipText("---지역을 선택하여 주십시오.----");

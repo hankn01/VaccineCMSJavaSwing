@@ -1,5 +1,7 @@
 package country;
 import java.awt.BorderLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,6 +18,15 @@ public class LocalVaccineControl extends JFrame{
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(WIDTH,HEIGHT);
 		this.setLayout(new BorderLayout());
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image prgImg = toolkit.getImage("programIcon.png");
+		this.setIconImage(prgImg);
+		this.setResizable(false);
+		
+		
+		
+		
 		
 		JPanel upPanel = new JPanel();
 		upPanel.setLayout(new BorderLayout());

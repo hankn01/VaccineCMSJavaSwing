@@ -14,6 +14,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,7 +34,11 @@ public class NationalStockScreen extends JFrame{
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		this.getContentPane().setBackground(new Color(103,58,183));
-		
+		this.setTitle("백신 회사 및 백신 물량 관리");
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image prgImg = toolkit.getImage("programIcon.png");
+		setIconImage(prgImg);
+		setResizable(false);
 		
 		
 		//JLabel Population = new JLabel();
@@ -103,6 +108,7 @@ public class NationalStockScreen extends JFrame{
 		NatControl.setActionCommand("회사");
 		CompanyButton.setActionCommand("국가");
 		//add(Population,BorderLayout.NORTH);
+		
 		add(NatStock,BorderLayout.NORTH);
 		add(downPanel,BorderLayout.CENTER);
 		

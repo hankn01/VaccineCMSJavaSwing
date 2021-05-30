@@ -14,6 +14,8 @@ import vaccineView.VaccineMainMenu;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -26,6 +28,15 @@ public class GUISelectCompany extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setSize(500,500);
 		this.setLayout(new FlowLayout());
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image prgImg = toolkit.getImage("programIcon.png");
+		this.setIconImage(prgImg);
+		this.setResizable(false);
+		
+		
+		
+		
 		
 		JButton AZ = new JButton("AstraZeneca(AZ)");
 		AZ.addActionListener(this);
