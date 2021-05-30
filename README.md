@@ -5,10 +5,9 @@
 
 ### Description
 * Login Form : 정부 사람이 맞는지 확인 (보안)
-* Country : 정부의 자국 코로나 백신현황 보기 및 백신 접종, 구매 현황 표시, 자국 회사들 정보 보기 가능
-  * 회사 전체 보기 및 관리 누르면 Company Frame 띄우기
-* Company : 회사가 백신을 생산 및 모든 회사 정보 관리, 각각의 회사 정보도 관리
-* Vaccine : 이름, 부작용 등의 정보 및 VaccineProduct[] 을 이용한 백신의 data를 저장 및 관리
+* Country : 정부의 자국 코로나 백신현황 보기 및 백신 접종, 구매 현황 표시, 자국 회사들 정보 보기 가능, 회사 전체 보기 및 관리 누르면 Company Frame 띄우기, 백신 상세보기 가능
+* Company : 회사가 백신을 생산 및 모든 회사 정보 관리, 각각의 회사 정보도 관리, 백신 상세보기 가능
+* Vaccine : 이름, 부작용 등의 정보 및 VaccineProduct[] 이용한 백신의 data를 저장 및 관리
 
 ### Structure
 * Login
@@ -26,11 +25,36 @@
 
 * vaccineView - GUI, ArrayList
   * EffectivenessContents.java
+    * This page compares the efficacy and risk of vaccines.
   * InformationContents.java
+    * This page shows information about the vaccine.
   * InventoryContents.java
+    * This page shows the stock of the vaccine.
   * MainContents.java
+    * This page is the home screen.
   * TopBar.java
+    * This component is the top bar of all screens.
+  * VaccineAdd.java
+    * This frame is for add VaccineProduct to Inventory.
   * VaccineMainMenu.java
+    * This frame is for landing Vaccine GUI.
+![Alt vaccineModel](./vaccineModelStructure.jpg)
+> MODEL
+* vaccine - Class, Inheritance, Interface : Abstract Class for one type of vaccine
+  * RNAVaccine : Abstract Class for RNA type of vaccine
+     * Moderna : Simentic Class for Moderna
+     * Pfizer : Simentic Class for Pfizer
+  * VirusVectorVaccine : Abstract Class for Virus Vector type of vaccine
+     * AZ : Simentic Class for AZ
+     * Yansen : Simentic Class for Yansen
+  * DNAVaccine : Abstract Class for DNA type of vaccine
+     * ChadOx1 : Simentic Class for ChadOx1
+  * VaccineProduct : Data Class for Vaccine Product
+     * Date : Data Class for Product date and Expire date of VaccineProduct
+* VaccineType : There is an enumeration of the types of vaccines.
+* SideEffect : There is an enumeration of the side effects of vaccines.
+* VaccineAddable : Interface for writing files for adding vaccine products to countries and companies
+ 
 ## 2020115974 한강민
 > GUI
 * country - GUI, Class for store national vaccine information
@@ -49,8 +73,3 @@
   * Country.java
   * VaccineLocation.java
   * VaccineSTCClass.java
-
-> MODEL   
-![Alt vaccineModel](./vaccineModelStructure.jpg)
-* vaccine - Class, Inheritance, Interface
-  * 
