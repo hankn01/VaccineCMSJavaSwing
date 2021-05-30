@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import vaccine.SideEffect.SideEffects;
 
 public abstract class Vaccine
-implements Inoculationable, Runnable {
+implements Runnable {
 	// 1. information
 	private VaccineType.VaccineTypes vaccineType;
 	private double cost;
@@ -101,17 +101,6 @@ implements Inoculationable, Runnable {
 		this.vaccineProduct = vaccineProduct;
 		Thread t = new Thread(this);
 		t.start();
-	}
-	
-	@Override
-	public double calcRisk(Ages age, HumanRaces humanRace) {
-		return getSideEffectRisk() 
-				* Inoculationable.RISK_FOR_AGE[age.ordinal()] * Inoculationable.RISK_FOR_HUMAN_RACE[humanRace.ordinal()];
-	}
-
-	@Override
-	public boolean canInoculation(Ages age, HumanRaces humanRace) {
-		return calcRisk(age, humanRace) < calcProfit(age, humanRace);
 	}
 	
 	@Override
