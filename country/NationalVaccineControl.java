@@ -122,7 +122,8 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 			
 		} catch (FileNotFoundException e) {
 			System.err.println("File Not Found.");
-			JOptionPane.showMessageDialog(null,"파일을 찾을 수 없습니다. (에러 코드 401)", "파일 오류",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,"백신 도입은 백신 회사 선정 후 가능합니다. 백신 회사를 먼저 선정하여 주십시오. 선정 후에도 이 창이 표시되는 경우 회사데이터.txt 파일이 존재하는지 확인하여 주십시오.", "백신 회사 미선정",JOptionPane.ERROR_MESSAGE);
+					
 			e.printStackTrace();
 		}
 		
@@ -142,7 +143,7 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 		form.add(c1);
 		
 		JLabel c2 = new JLabel();
-		c2.setText("'년/월/일' 형식으로 입력합니다.");
+		c2.setText("'년-월-일' 형식으로 입력합니다.");
 		form.add(c2);
 		
 		JLabel VacNumLbl = new JLabel();
@@ -303,7 +304,7 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 				oout.writeObject(STCdata);
 			} catch (FileNotFoundException e1) {
 				System.err.println("File Not Found.");
-				JOptionPane.showMessageDialog(null,"파일을 찾을 수 없습니다. (에러 코드 401)", "파일 오류",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,"백신 도입은 백신 회사 선정 후 가능합니다. 백신 회사를 먼저 선정하여 주십시오. 선정 후에도 이 창이 표시되는 경우 회사데이터.txt 파일이 존재하는지 확인하여 주십시오.", "백신 회사 미선정",JOptionPane.ERROR_MESSAGE);
 				e1.printStackTrace();
 			} catch (IOException e1) {
 				System.err.println("File IOException.");

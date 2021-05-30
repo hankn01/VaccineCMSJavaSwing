@@ -1,6 +1,7 @@
 package country;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import company.CPcompany;
 import vaccine.AZ;
@@ -132,10 +133,11 @@ public class GUISelectCompany extends JFrame implements ActionListener, VaccineT
 		}
 		else if(e.getActionCommand().equals("차드"))
 		{
-		
+		/*
 			ChadOx1data = new VaccineForIO("ChadOx1",500);
 			VaccineMainMenu vmm = new VaccineMainMenu(ChadOx1data.getvaccineinfo(), ChadOx1data);
-			
+			*/
+			JOptionPane.showMessageDialog(null, "현재 개발중인 백신으로 보유하고 있지 않습니다.");
 		}
 		else if(e.getActionCommand().equals("모더나"))
 		{
