@@ -45,6 +45,6 @@ implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		VaccineAdd va = new VaccineAdd(vaccineAddable);
+		VaccineAdd va = new VaccineAdd(vaccine, vaccineAddable);
 	}
 }
