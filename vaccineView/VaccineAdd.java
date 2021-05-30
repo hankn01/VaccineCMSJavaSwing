@@ -78,7 +78,7 @@ implements ActionListener {
 		);
 		
 		vaccine.addVaccineProduct(vaccineProduct);
-		
+		 
 		vaccineAddable.addToFile(vaccineProduct);
 	}
 }
