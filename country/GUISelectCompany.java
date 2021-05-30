@@ -125,7 +125,7 @@ public class GUISelectCompany extends JFrame implements ActionListener, VaccineT
 		if(e.getActionCommand().equals("아스트라"))
 		{
 			
-			AZdata = new VaccineForIO("AZ", 500);
+			AZdata = new VaccineForIO("AZ", 11);
 			
 			VaccineMainMenu vmm = new VaccineMainMenu(AZdata.getvaccineinfo(), AZdata);
 			
@@ -142,7 +142,7 @@ public class GUISelectCompany extends JFrame implements ActionListener, VaccineT
 		else if(e.getActionCommand().equals("모더나"))
 		{
 
-			Modernadata = new VaccineForIO("Moderna", 500);
+			Modernadata = new VaccineForIO("Moderna", 9);
 			
 			VaccineMainMenu vmm = new VaccineMainMenu(Modernadata.getvaccineinfo(),Modernadata);
 			
@@ -152,7 +152,7 @@ public class GUISelectCompany extends JFrame implements ActionListener, VaccineT
 		else if(e.getActionCommand().equals("화이자"))
 		{
 			
-			Pfizerdata = new VaccineForIO("Pfizer",500);
+			Pfizerdata = new VaccineForIO("Pfizer",9);
 
 			
 			VaccineMainMenu vmm = new VaccineMainMenu(Pfizerdata.getvaccineinfo(),Pfizerdata);
@@ -162,7 +162,7 @@ public class GUISelectCompany extends JFrame implements ActionListener, VaccineT
 		}
 		else if(e.getActionCommand().equals("얀센"))
 		{
-			Yansendata = new VaccineForIO("Yansen",500);
+			Yansendata = new VaccineForIO("Yansen",10);
 			
 			
 			VaccineMainMenu vmm = new VaccineMainMenu(Yansendata.getvaccineinfo(), Yansendata);

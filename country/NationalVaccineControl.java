@@ -267,6 +267,7 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 			
 			
 		}
+		/*
 		else if(e.getActionCommand().equals("¹é½Å Æó±â"))
 		{
 			temp = new VaccineSTCClass();
@@ -313,7 +314,7 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 			}
 			
 		}
-		
+		*/
 	}
 	
 }
