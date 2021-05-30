@@ -31,6 +31,24 @@
   * MainContents.java
   * TopBar.java
   * VaccineMainMenu.java
+## 2020115974 한강민
+> GUI
+* country - GUI, Class for store national vaccine information
+  * CountryScreen.java
+    * This page is the main page of this program. Users are able to select the function that they need.
+  * GUISelectCompany.java
+    * This is the select screen for the vaccine owned by country. They can select the vaccine manufacturer.
+  * LocalStockScreen.java
+    * This is the stock screen for local government.
+  * LocalVaccineControl.java
+    * This is the allocate screen for local government.
+  * NationalStockScreen.java
+    * This is the menu screen. You can select company stock menu or vaccine get menu.
+  * NationalVaccineControl.java
+    * This is the screen for vaccine introduce.
+  * Country.java
+  * VaccineLocation.java
+  * VaccineSTCClass.java
 
 > MODEL   
 ![Alt vaccineModel](./vaccineModelStructure.jpg)
