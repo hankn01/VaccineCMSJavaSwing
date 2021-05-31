@@ -65,11 +65,16 @@
   * LocalStockScreen.java
     * This is the stock screen for local government.
   * LocalVaccineControl.java
-    * This is the allocate screen for local government.
+    * This is the allocate screen for local government using ArrayList
   * NationalStockScreen.java
     * This is the menu screen. You can select company stock menu or vaccine get menu.
   * NationalVaccineControl.java
     * This is the screen for vaccine introduce.
-  * Country.java
-  * VaccineLocation.java
   * VaccineSTCClass.java
+    * Store the Information about Vaccine Amount in specific location. (Serializable)
+  * VaccineForIO.java
+    * Set the company of vaccine (opening the file) and fill the inventory, and be able to write the file about the vaccine.
+  * Country.java
+    * Stub class
+  * VaccineLocation.java
+    * Stub class
