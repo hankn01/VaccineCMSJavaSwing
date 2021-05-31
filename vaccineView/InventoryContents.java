@@ -31,6 +31,7 @@ implements ActionListener {
 			body[i][3] = vaccine.getInventory().get(i).getExpireDate().toString();
 		}
 		
+		
 		JScrollPane scroll = new JScrollPane(new JTable(body, HEADER));
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
@@ -46,5 +47,6 @@ implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		VaccineAdd va = new VaccineAdd(vaccine, vaccineAddable);
+		
 	}
 }

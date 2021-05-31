@@ -145,20 +145,27 @@ public class LocalStockScreen extends JFrame{
 			else if(e.getActionCommand().equals("확인"))
 			{
 				System.out.println(SelectLocation.getSelectedItem().toString());
-				System.out.println(data.get(SelectLocation.getSelectedItem().toString()).getAZStock());
+				//System.out.println(data.get(SelectLocation.getSelectedItem().toString()).getAZStock());
 				
 				if(data.containsKey(SelectLocation.getSelectedItem().toString()))
 				{
+					try
+					{
 					res.setText("아스트라제네카(AZ):"+data.get(SelectLocation.getSelectedItem().toString()).getAZStock()+", 모더나:"+data.get(SelectLocation.getSelectedItem().toString()).getModernaStock()+", 화이자: "+data.get(SelectLocation.getSelectedItem().toString()).getPfizerStock()+", 얀센: "+data.get(SelectLocation.getSelectedItem().toString()).getYansenStock()+"ChadOx1"+data.get(SelectLocation.getSelectedItem().toString()).getChadOx1Stock());
+					}catch(NullPointerException npe)	
+					{
+						JOptionPane.showMessageDialog(null, "할당하지 않은 지역입니다.","미할당 지역",JOptionPane.ERROR_MESSAGE);
+						npe.printStackTrace();
 						
+					}
 					
 					
 				
 				}
 				else if(data.get(SelectLocation.getSelectedItem().toString()) == null)
-					JOptionPane.showMessageDialog(null, "항목이 존재하지 않습니다.");
+					JOptionPane.showMessageDialog(null, "할당하지 않은 지역입니다.","미할당 지역",JOptionPane.ERROR_MESSAGE);
 				else
-					JOptionPane.showMessageDialog(null, "항목이 존재하지 않습니다.");
+					JOptionPane.showMessageDialog(null, "할당하지 않은 지역이거나 프로그램 오류입니다.","미할당 지역",JOptionPane.ERROR_MESSAGE);
 				
 			}
 			else if(e.getActionCommand().equals("저장"))

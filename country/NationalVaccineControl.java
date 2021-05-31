@@ -33,13 +33,14 @@ import java.util.Scanner;
 
 public class NationalVaccineControl extends JFrame implements ActionListener{
 	public static final int WIDTH = 450;
-	public static final int HEIGHT = 250;
+	public static final int HEIGHT = 350;
 	VaccineSTCClass temp = null;
 	JComboBox selectCompany = null;
 	JTextField Amount = null;
 	JTextField DInput = null;
 	JTextField VacNum = null;
 	JTextField EDInput = null;
+	JLabel b1 = null;
 	HashMap<String, VaccineSTCClass> STCdata = null;
 	public NationalVaccineControl()
 	{
@@ -136,10 +137,19 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 		
 		
 		JPanel form = new JPanel();
-		form.setLayout(new GridLayout(5,2));
+		form.setLayout(new GridLayout(6,2));
+		
+		JButton b1b = new JButton("월 백신생산량 확인");
+		b1b.addActionListener(this);
+		b1b.setActionCommand("월백");
+		form.add(b1b);
+		
+		b1 = new JLabel();
+		b1.setText("백신생산량을 확인하려면 '월 백신생산량 확인' 버튼을 클릭하여 주십시오.");
+		form.add(b1);
 		
 		JLabel c1 = new JLabel();
-		c1.setText("도입 일자와 종료 일자는");
+		c1.setText("도입 일자와 사용기한은");
 		form.add(c1);
 		
 		JLabel c2 = new JLabel();
@@ -266,6 +276,31 @@ public class NationalVaccineControl extends JFrame implements ActionListener{
 			
 			
 			
+		}
+		else if(e.getActionCommand().equals("월백"))
+		{
+			FileInputStream fi = null;
+			try {
+				fi = new FileInputStream("회사데이터.txt");
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			String[] inp_temp = null;
+			Scanner scan = new Scanner(fi);
+			String input = null;
+			
+			for(int i=0;i<=selectCompany.getSelectedIndex();i++)
+			{
+				
+				input = scan.nextLine();
+			}
+			
+			
+			System.out.println(input);
+			inp_temp = input.split("-");
+			
+			b1.setText("월 백신생산량: "+inp_temp[4]);
 		}
 		/*
 		else if(e.getActionCommand().equals("백신 폐기"))
